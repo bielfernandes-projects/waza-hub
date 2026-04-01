@@ -1,12 +1,34 @@
 'use server'
 
-import { createClient } from '@/utils/supabase/server'
+import { createServerClient } from '@supabase/ssr'
+import { cookies } from 'next/headers'
 import { revalidatePath } from 'next/cache'
 
 export async function toggleTechniqueProgress(techniqueId: string, isCompleted: boolean) {
   console.log(`[Progress Action] Toggling technique ${techniqueId} to ${isCompleted}`)
   
-  const supabase = await createClient()
+  const cookieStore = await cookies()
+
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return cookieStore.getAll()
+        },
+        setAll(cookiesToSet) {
+          try {
+            cookiesToSet.forEach(({ name, value, options }) =>
+              cookieStore.set(name, value, options)
+            )
+          } catch {
+            // Ignore error from setAll during Server Action
+          }
+        },
+      },
+    }
+  )
 
   // 1. Get current user securely
   const { data: { user }, error: userError } = await supabase.auth.getUser()
@@ -15,6 +37,8 @@ export async function toggleTechniqueProgress(techniqueId: string, isCompleted: 
     console.error(`[Progress Action] Auth Error:`, userError)
     throw new Error('User not authenticated')
   }
+
+  console.log(`[Progress Action] Authenticated user: ${user.id}`)
 
   // 2. Check if a record already exists
   const { data: existingRecord, error: selectError } = await supabase
