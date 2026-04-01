@@ -8,6 +8,7 @@ export default async function Home() {
   const { data: { user } } = await supabase.auth.getUser();
 
   let completedTechniqueIds = new Set<string>();
+  let completedHistoryIds = new Set<string>();
 
   if (user) {
     const { data: progressData } = await supabase
@@ -20,11 +21,14 @@ export default async function Home() {
       completedTechniqueIds = new Set(
         progressData.filter(p => p.type === 'technique').map(p => p.reference_id)
       );
+      completedHistoryIds = new Set(
+        progressData.filter(p => p.type === 'history').map(p => p.reference_id)
+      );
     }
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-full min-h-[calc(100vh-64px)]">
       <div className="p-8 border-b-2 border-black bg-neutral-100 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <h2 className="text-5xl font-black uppercase tracking-tighter leading-none mb-4">
@@ -42,10 +46,19 @@ export default async function Home() {
         )}
       </div>
 
-      <div className="flex flex-col">
-        {BELTS.map(belt => (
-          <BeltListItem key={belt.id} belt={belt} globalCompletedIds={completedTechniqueIds} />
-        ))}
+      <div className="flex-1 flex flex-col p-6 overflow-hidden">
+        <h3 id="faixas" className="text-2xl font-black uppercase tracking-widest mb-6">Trilha de Faixas</h3>
+        <div className="-mx-6 px-6 pb-8 overflow-x-auto flex gap-6 snap-x snap-mandatory scroll-smooth hide-scrollbar h-full items-stretch">
+          {BELTS.map(belt => (
+            <div key={belt.id} className="snap-center sm:snap-start flex-none w-[85vw] sm:w-[320px] h-full transition-transform">
+               <BeltListItem 
+                 belt={belt} 
+                 globalCompletedIds={completedTechniqueIds} 
+                 completedHistoryIds={completedHistoryIds} 
+               />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

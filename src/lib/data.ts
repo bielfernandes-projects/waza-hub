@@ -14,7 +14,7 @@ export interface Belt {
   name: string;
   slug: string;
   order: number; // For progression
-  color: string; // Hex or Tailwind class
+  colors: string[]; // Supports multiple hex/tailwind classes for dual belts
   history: string[];
   techniques: Technique[];
 }
@@ -25,7 +25,7 @@ export const BELTS: Belt[] = [
     name: "Branca/Cinza",
     slug: "branca-cinza",
     order: 1,
-    color: "bg-gray-100", // Soft mix
+    colors: ["bg-white", "bg-gray-400"],
     history: [
       "O início do caminho do judoca.",
       "Aprendizado das quedas (Ukemi) para segurança básica."
@@ -40,7 +40,7 @@ export const BELTS: Belt[] = [
     name: "Cinza",
     slug: "cinza",
     order: 2,
-    color: "bg-gray-500",
+    colors: ["bg-gray-400"],
     history: [
       "Consolidação da base física.",
       "Introdução às imobilizações em solo."
@@ -55,7 +55,7 @@ export const BELTS: Belt[] = [
     name: "Cinza/Azul",
     slug: "cinza-azul",
     order: 3,
-    color: "bg-blue-300",
+    colors: ["bg-gray-400", "bg-blue-600"],
     history: [
       "Fase de transição com foco em movimentos mais amplos."
     ],
@@ -69,7 +69,7 @@ export const BELTS: Belt[] = [
     name: "Azul",
     slug: "azul",
     order: 4,
-    color: "bg-blue-600",
+    colors: ["bg-blue-600"],
     history: [
       "Maior dinâmica de quadril e velocidade.",
       "Estudos iniciais de estrangulamentos básicos (quando aplicável ou simulado para conhecimento)."
@@ -84,7 +84,7 @@ export const BELTS: Belt[] = [
     name: "Azul/Amarela",
     slug: "azul-amarela",
     order: 5,
-    color: "bg-yellow-200",
+    colors: ["bg-blue-600", "bg-yellow-400"],
     history: [
       "Desenvolvimento de combinações e sequência de pernas."
     ],
@@ -98,7 +98,7 @@ export const BELTS: Belt[] = [
     name: "Amarela",
     slug: "amarela",
     order: 6,
-    color: "bg-yellow-400",
+    colors: ["bg-yellow-400"],
     history: [
       "Forte presença no randori (luta de treinamento).",
       "Combinações avançadas e independência em combate."
@@ -113,7 +113,7 @@ export const BELTS: Belt[] = [
     name: "Amarela/Laranja",
     slug: "amarela-laranja",
     order: 7,
-    color: "bg-orange-300",
+    colors: ["bg-yellow-400", "bg-orange-500"],
     history: [
       "Exploração do centro de gravidade e ashi-waza complexos."
     ],
@@ -127,7 +127,7 @@ export const BELTS: Belt[] = [
     name: "Laranja",
     slug: "laranja",
     order: 8,
-    color: "bg-orange-500",
+    colors: ["bg-orange-500"],
     history: [
       "Refinamento das técnicas de sacrifício iniciantes.",
       "Melhor controle de pegada (Kumi-kata)."
@@ -142,7 +142,7 @@ export const BELTS: Belt[] = [
     name: "Verde",
     slug: "verde",
     order: 9,
-    color: "bg-green-600",
+    colors: ["bg-green-600"],
     history: [
       "Domínio das transições (Nage-waza para Ne-waza).",
       "Sutemi-waza formal em progressão."
@@ -157,7 +157,7 @@ export const BELTS: Belt[] = [
     name: "Roxa",
     slug: "roxa",
     order: 10,
-    color: "bg-purple-600",
+    colors: ["bg-purple-600"],
     history: [
       "Domínio de contragolpes (kaeshi-waza).",
       "Alavancas e chaves articulares sistêmicas (Kansetsu-waza)."
@@ -172,7 +172,7 @@ export const BELTS: Belt[] = [
     name: "Marrom",
     slug: "marrom",
     order: 11,
-    color: "bg-amber-800",
+    colors: ["bg-amber-800"],
     history: [
       "Estudos focais do Gokyo e Nage-no-kata integrais.",
       "Preparação máxima para a graduação."
@@ -187,7 +187,7 @@ export const BELTS: Belt[] = [
     name: "Preta",
     slug: "preta",
     order: 12,
-    color: "bg-black",
+    colors: ["bg-black"],
     history: [
       "O domínio do caminho suave e o início de uma nova jornada como expert."
     ],
