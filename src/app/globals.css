@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-belt-branca: #FFFFFF;
+  --color-belt-cinza: #888888;
+  --color-belt-azul: #0055FF;
+  --color-belt-amarela: #FFD500;
+  --color-belt-laranja: #FF5500;
+  --color-belt-verde: #00AA00;
+  --color-belt-roxa: #6600CC;
+  --color-belt-marrom: #4A2500;
+  --color-belt-preta: #000000;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  :root {
+    --background: #FFFFFF;
+    --foreground: #000000;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  /* Brutalist reset: No smooth scrolling, harsh selection */
+}
+
+::selection {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+/* Brutalist utilities */
+@layer utilities {
+  .border-brutal {
+    border: 2px solid #000000;
+  }
+}
