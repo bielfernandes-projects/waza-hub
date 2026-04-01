@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { HeaderAuth } from './HeaderAuth';
 
 export function Header() {
@@ -24,9 +25,15 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-40 w-full border-b-4 border-black bg-white shadow-sm">
-        <div className={`flex h-16 items-center px-6 ${isLoginPage ? 'justify-center' : 'justify-between'}`}>
-          <Link href="/" onClick={closeSidebar} className="font-black text-2xl uppercase tracking-tighter hover:scale-105 transition-transform">
-            Waza<span className="text-red-600 border-b-4 border-red-600 pb-1">Hub</span>
+        <div className={`flex h-20 items-center px-6 ${isLoginPage ? 'justify-center' : 'justify-between'}`}>
+          <Link href="/" onClick={closeSidebar} className="relative h-16 w-32 hover:scale-105 transition-transform">
+            <Image 
+              src="/logo.png" 
+              alt="WazaHub Logo"
+              fill
+              className="object-contain"
+              priority
+            />
           </Link>
           
           {!isLoginPage && (

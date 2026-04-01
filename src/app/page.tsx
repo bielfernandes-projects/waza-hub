@@ -28,7 +28,7 @@ export default async function Home() {
   }
 
   return (
-    <div className="flex flex-col h-full min-h-[calc(100vh-64px)]">
+    <div className="flex flex-col h-full min-h-[calc(100vh-80px)]">
       <div className="p-8 border-b-2 border-black bg-neutral-100 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <h2 className="text-5xl font-black uppercase tracking-tighter leading-none mb-4">
