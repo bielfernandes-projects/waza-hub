@@ -4,8 +4,8 @@ import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { revalidatePath } from 'next/cache'
 
-export async function toggleTechniqueProgress(techniqueId: string, isCompleted: boolean) {
-  console.log(`[Progress Action] Toggling technique ${techniqueId} to ${isCompleted}`)
+export async function toggleProgress(referenceId: string, isCompleted: boolean, type: 'technique' | 'history' = 'technique') {
+  console.log(`[Progress Action] Toggling ${type} ${referenceId} to ${isCompleted}`)
   
   const cookieStore = await cookies()
 
@@ -38,14 +38,13 @@ export async function toggleTechniqueProgress(techniqueId: string, isCompleted: 
     throw new Error('User not authenticated')
   }
 
-  console.log(`[Progress Action] Authenticated user: ${user.id}`)
-
   // 2. Check if a record already exists
   const { data: existingRecord, error: selectError } = await supabase
     .from('progress')
     .select('id, completed')
     .eq('user_id', user.id)
-    .eq('technique_id', techniqueId)
+    .eq('reference_id', referenceId)
+    .eq('type', type)
     .limit(1)
     .maybeSingle()
 
@@ -73,7 +72,8 @@ export async function toggleTechniqueProgress(techniqueId: string, isCompleted: 
       .from('progress')
       .insert({
         user_id: user.id,
-        technique_id: techniqueId,
+        reference_id: referenceId,
+        type: type,
         completed: isCompleted
       })
 
@@ -83,7 +83,7 @@ export async function toggleTechniqueProgress(techniqueId: string, isCompleted: 
     }
   }
 
-  console.log(`[Progress Action] Successfully changed progress for ${techniqueId}`)
+  console.log(`[Progress Action] Successfully changed progress for ${referenceId}`)
 
   // 4. Force a generic layout revalidation to guarantee UI sync globally
   revalidatePath('/', 'layout')
