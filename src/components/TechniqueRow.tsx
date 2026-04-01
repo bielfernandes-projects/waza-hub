@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState, useTransition, useEffect } from 'react';
 import { type Technique } from '@/lib/data';
 import { toggleTechniqueProgress } from '@/app/actions/progress';
 
@@ -13,6 +13,11 @@ export function TechniqueRow({ technique, isCompleted }: TechniqueRowProps) {
   const [completed, setCompleted] = useState(isCompleted);
   const [expanded, setExpanded] = useState(false);
   const [isPending, startTransition] = useTransition();
+
+  // Sync with server state if it changes unexpectedly due to revalidatePath
+  useEffect(() => {
+    setCompleted(isCompleted);
+  }, [isCompleted]);
 
   const handleToggle = () => {
     // optimistic update

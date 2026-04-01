@@ -4,52 +4,62 @@ import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
 
 export async function toggleTechniqueProgress(techniqueId: string, isCompleted: boolean) {
+  console.log(`[Progress Action] Toggling technique ${techniqueId} to ${isCompleted}`)
+  
   const supabase = await createClient()
 
-  // Get current user
+  // 1. Get current user securely
   const { data: { user }, error: userError } = await supabase.auth.getUser()
 
   if (userError || !user) {
+    console.error(`[Progress Action] Auth Error:`, userError)
     throw new Error('User not authenticated')
   }
 
-  if (isCompleted) {
-    // Insert completion record
-    const { error } = await supabase
-      .from('progress')
-      .upsert({
-        user_id: user.id,
-        technique_id: techniqueId,
-        completed: true
-      }, {
-        onConflict: 'user_id, technique_id'
-      })
+  // 2. Check if a record already exists
+  const { data: existingRecord, error: selectError } = await supabase
+    .from('progress')
+    .select('id, completed')
+    .eq('user_id', user.id)
+    .eq('technique_id', techniqueId)
+    .maybeSingle()
 
-    if (error) {
-      console.error("Error setting progress:", error)
+  if (selectError) {
+    console.error(`[Progress Action] Select Error:`, selectError)
+    throw new Error('Failed to fetch existing progress')
+  }
+
+  if (existingRecord) {
+    // 3A. Update existing record
+    console.log(`[Progress Action] Record exists (${existingRecord.id}), updating to ${isCompleted}`)
+    const { error: updateError } = await supabase
+      .from('progress')
+      .update({ completed: isCompleted })
+      .eq('id', existingRecord.id)
+
+    if (updateError) {
+      console.error(`[Progress Action] Update Error:`, updateError)
       throw new Error('Failed to update progress')
     }
   } else {
-    // Alternatively, update it to complete = false or just delete it.
-    // Deleting is cleaner if `completed` is just a boolean existance,
-    // but updating keeps history (created_at). We'll update completed=false.
-    const { error } = await supabase
+    // 3B. Insert new record
+    console.log(`[Progress Action] No record found. Inserting new progress record.`)
+    const { error: insertError } = await supabase
       .from('progress')
-      .upsert({
+      .insert({
         user_id: user.id,
         technique_id: techniqueId,
-        completed: false
-      }, {
-        onConflict: 'user_id, technique_id'
+        completed: isCompleted
       })
 
-    if (error) {
-      console.error("Error updating progress:", error)
-      throw new Error('Failed to update progress')
+    if (insertError) {
+      console.error(`[Progress Action] Insert Error:`, insertError)
+      throw new Error('Failed to insert progress')
     }
   }
 
-  // Revalidate so the page re-fetches the correct progress dynamically
-  revalidatePath('/belts/[slug]', 'page')
-  revalidatePath('/')
+  console.log(`[Progress Action] Successfully changed progress for ${techniqueId}`)
+
+  // 4. Force a generic layout revalidation to guarantee UI sync globally
+  revalidatePath('/', 'layout')
 }
