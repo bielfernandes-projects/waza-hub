@@ -46,11 +46,12 @@ export async function toggleTechniqueProgress(techniqueId: string, isCompleted: 
     .select('id, completed')
     .eq('user_id', user.id)
     .eq('technique_id', techniqueId)
+    .limit(1)
     .maybeSingle()
 
   if (selectError) {
     console.error(`[Progress Action] Select Error:`, selectError)
-    throw new Error('Failed to fetch existing progress')
+    throw new Error(`Select Error: ${selectError.message} (Code: ${selectError.code})`)
   }
 
   if (existingRecord) {
