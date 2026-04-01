@@ -19,23 +19,27 @@ export function Header() {
     { name: 'Perfil', href: '#' },
   ];
 
+  const isLoginPage = pathname === '/login';
+
   return (
     <>
       <header className="sticky top-0 z-40 w-full border-b-4 border-black bg-white shadow-sm">
-        <div className="flex h-16 items-center justify-between px-6">
+        <div className={`flex h-16 items-center px-6 ${isLoginPage ? 'justify-center' : 'justify-between'}`}>
           <Link href="/" onClick={closeSidebar} className="font-black text-2xl uppercase tracking-tighter hover:scale-105 transition-transform">
             Waza<span className="text-red-600 border-b-4 border-red-600 pb-1">Hub</span>
           </Link>
           
-          <button 
-            onClick={toggleSidebar}
-            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors"
-            aria-label="Toggle menu"
-          >
-            <span className="block h-1 w-6 bg-current"></span>
-            <span className="block h-1 w-6 bg-current"></span>
-            <span className="block h-1 w-6 bg-current"></span>
-          </button>
+          {!isLoginPage && (
+            <button 
+              onClick={toggleSidebar}
+              className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors"
+              aria-label="Toggle menu"
+            >
+              <span className="block h-1 w-6 bg-current"></span>
+              <span className="block h-1 w-6 bg-current"></span>
+              <span className="block h-1 w-6 bg-current"></span>
+            </button>
+          )}
         </div>
       </header>
 
