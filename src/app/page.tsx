@@ -1,4 +1,4 @@
-import { BELTS } from '@/data/mockData';
+import { BELTS } from '@/lib/data';
 import { BeltListItem } from '@/components/BeltListItem';
 
 export default function Home() {

@@ -1,18 +1,20 @@
 import Link from 'next/link';
-import { type Belt } from '@/data/mockData';
+import { type Belt, getTechniquesForBelt } from '@/lib/data';
 
 interface BeltListItemProps {
   belt: Belt;
 }
 
 export function BeltListItem({ belt }: BeltListItemProps) {
+  // Aggregate techniques to show correct total available
+  const aggregatedTechniques = getTechniquesForBelt(belt.id);
+
   return (
     <Link href={`/belts/${belt.slug}`} className="block border-b-2 border-black last:border-b-0 hover:bg-neutral-100 transition-colors">
       <div className="flex items-stretch min-h-[100px]">
         {/* Color Band - Brutalist, edge-to-edge */}
         <div 
-          className="w-8 shrink-0 border-r-2 border-black" 
-          style={{ backgroundColor: belt.colorVar }}
+          className={`w-8 shrink-0 border-r-2 border-black ${belt.color}`} 
           aria-hidden="true"
         />
         
@@ -22,8 +24,8 @@ export function BeltListItem({ belt }: BeltListItemProps) {
             {belt.name}
           </h2>
           <div className="mt-2 flex items-center gap-4 text-sm font-bold opacity-60 uppercase tracking-widest">
-            <span>Progress: 0%</span>
-            <span>{belt.techniques.length} Técnicas</span>
+            <span>Progresso: 0%</span>
+            <span>{aggregatedTechniques.length} Técnicas Acumuladas</span>
           </div>
         </div>
 

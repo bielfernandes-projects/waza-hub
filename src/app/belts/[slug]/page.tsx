@@ -1,29 +1,48 @@
 import { notFound } from 'next/navigation';
-import { getBeltWithCumulativeTechniques } from '@/data/mockData';
+import { getBeltData } from '@/lib/data';
 import { ExpandableHistory } from '@/components/ExpandableHistory';
 import { TechniqueRow } from '@/components/TechniqueRow';
 import Link from 'next/link';
-import { TechniqueCategory } from '@/data/mockData';
+import { TechniqueCategory } from '@/lib/data';
+import { createClient } from '@/utils/supabase/server';
 
 export default async function BeltPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const belt = getBeltWithCumulativeTechniques(slug);
+  const belt = getBeltData(slug);
 
   if (!belt) {
     notFound();
   }
 
-  // Calculate completion statically for now. MVP goal is just UI structure + toggle state per row.
-  const completedCount = 0; 
-  const totalCount = belt.techniques.length;
+  // Fetch progress from Supabase
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  let completedIds = new Set<string>();
+
+  if (user) {
+    const { data: progressData } = await supabase
+      .from('progress')
+      .select('technique_id')
+      .eq('user_id', user.id)
+      .eq('completed', true);
+
+    if (progressData) {
+      completedIds = new Set(progressData.map(p => p.technique_id));
+    }
+  }
+
+  const techniques = belt.allTechniques;
+  const completedCount = techniques.filter(t => completedIds.has(t.id)).length;
+  const totalCount = techniques.length;
   const progressPercentage = totalCount === 0 ? 0 : Math.round((completedCount / totalCount) * 100);
 
   // Group techniques by category
-  const categories: TechniqueCategory[] = ["Ukemi", "Nage-waza", "Katame-waza", "Kumi-kata"];
+  const categories: TechniqueCategory[] = ["Ukemi", "Nage-waza", "Katame-waza"];
   
   const groupedTechniques = categories.map(category => ({
     category,
-    techniques: belt.techniques.filter(t => t.category === category)
+    techniques: techniques.filter(t => t.category === category)
   })).filter(g => g.techniques.length > 0);
 
   return (
@@ -31,8 +50,7 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
       {/* Header with back button */}
       <div className="border-b-2 border-black relative">
         <div 
-          className="absolute inset-0 z-0 opacity-20"
-          style={{ backgroundColor: belt.colorVar }}
+          className={`absolute inset-0 z-0 opacity-20 ${belt.color}`}
         />
         <div className="p-6 relative z-10">
           <Link href="/" className="inline-flex items-center gap-2 font-black uppercase text-sm tracking-widest bg-black text-white px-4 py-2 border-2 border-black hover:bg-white hover:text-black transition-colors mb-6">
@@ -42,7 +60,7 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
             Voltar
           </Link>
 
-          <h1 className="text-6xl font-black uppercase tracking-tighter mb-4" style={{ color: belt.colorVar !== 'var(--color-belt-branca)' ? belt.colorVar : 'black' }}>
+          <h1 className="text-6xl font-black uppercase tracking-tighter mb-4 text-black mix-blend-multiply">
             Faixa {belt.name}
           </h1>
 
@@ -50,19 +68,21 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
             <div className="font-black text-xl uppercase tracking-widest">
               Progresso
             </div>
-            <div className="text-4xl font-black">
+            <div className="text-4xl font-black animate-pulse-once">
               {progressPercentage}%
             </div>
           </div>
         </div>
       </div>
 
-      <ExpandableHistory description={belt.description} />
+      {belt.history.length > 0 && (
+        <ExpandableHistory description={belt.history.join(' ')} />
+      )}
 
       <div className="p-6 bg-black text-white py-8 border-b-2 border-black">
         <h2 className="text-3xl font-black uppercase tracking-widest text-center">Técnicas Requeridas</h2>
         <p className="text-center mt-2 opacity-70 font-bold max-w-md mx-auto">
-          Técnicas cumulativas de todas as faixas progressivas até chegar a meta.
+          Técnicas cumulativas de todas as faixas progressivas aplicáveis.
         </p>
       </div>
 
@@ -74,7 +94,11 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
             </h3>
             <div className="flex flex-col">
               {group.techniques.map((t) => (
-                <TechniqueRow key={t.id} technique={t} />
+                <TechniqueRow 
+                  key={t.id} 
+                  technique={t} 
+                  isCompleted={completedIds.has(t.id)} 
+                />
               ))}
             </div>
           </div>
