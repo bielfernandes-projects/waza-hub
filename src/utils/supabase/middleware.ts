@@ -30,8 +30,28 @@ export const updateSession = async (request: NextRequest) => {
       }
     )
 
-    // refreshing the auth token
-    await supabase.auth.getUser()
+    // refreshing the auth token and getting user
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+
+    const { pathname } = request.nextUrl
+
+    // If user is not logged in and tries to access any page other than /login or /signup
+    // redirect them to /login
+    if (!user && !pathname.startsWith('/login') && !pathname.startsWith('/signup')) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/login'
+      return NextResponse.redirect(url)
+    }
+
+    // If user is logged in and tries to access /login or /signup
+    // redirect them to the home page (protected)
+    if (user && (pathname.startsWith('/login') || pathname.startsWith('/signup'))) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/'
+      return NextResponse.redirect(url)
+    }
 
     return supabaseResponse
   } catch (e) {
