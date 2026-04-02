@@ -44,17 +44,17 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
   const hasHistory = belt.history.length > 0;
   
   // Real Math Mapping
-  const completedTechsCount = techniques.filter(t => completedTechniqueIds.has(t.id)).length;
+  const completedTechsCount = techniques.filter((t: Technique) => completedTechniqueIds.has(t.id)).length;
   const totalCount = techniques.length + (hasHistory ? 1 : 0);
   const completedCount = completedTechsCount + (hasHistory && isHistoryCompleted ? 1 : 0);
   const progressPercentage = totalCount === 0 ? 0 : Math.round((completedCount / totalCount) * 100);
 
   // Group techniques by category dynamically from current techniques
-  const categories = Array.from(new Set(techniques.map(t => t.category)));
+  const categories = Array.from(new Set(techniques.map((t: Technique) => t.category)));
   
-  const groupedTechniques = categories.map(category => ({
+  const groupedTechniques = categories.map((category: string) => ({
     category,
-    techniques: techniques.filter(t => t.category === category)
+    techniques: techniques.filter((t: Technique) => t.category === category)
   })).filter(g => g.techniques.length > 0);
 
   return (

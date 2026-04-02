@@ -1,5 +1,5 @@
 import { createClient } from '@/utils/supabase/server';
-import { BELTS, getBeltWithCumulativeData } from '@/lib/data';
+import { BELTS, getBeltWithCumulativeData, type Technique } from '@/lib/data';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
@@ -27,7 +27,7 @@ export default async function ProgressPage() {
   );
 
   // Calculate unique global points
-  const allUniqueTechniques = new Set(BELTS.flatMap(b => b.techniques.map(t => t.id)));
+  const allUniqueTechniques = new Set(BELTS.flatMap(b => b.techniques.map((t: Technique) => t.id)));
   const totalTechniques = allUniqueTechniques.size;
   const totalHistories = BELTS.filter(b => b.history.length > 0).length;
   const totalAvailablePoints = totalTechniques + totalHistories;
@@ -81,7 +81,7 @@ export default async function ProgressPage() {
              const historyDone = completedHistoryIds.has(belt.id);
              
              const totalInBelt = beltTechs.length + (hasHistory ? 1 : 0);
-             const completedInBelt = beltTechs.filter(t => completedTechniqueIds.has(t.id)).length + (hasHistory && historyDone ? 1 : 0);
+             const completedInBelt = beltTechs.filter((t: Technique) => completedTechniqueIds.has(t.id)).length + (hasHistory && historyDone ? 1 : 0);
 
              const percentage = totalInBelt === 0 ? 0 : Math.round((completedInBelt / totalInBelt) * 100);
 

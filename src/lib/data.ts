@@ -7,6 +7,8 @@ export type Technique = {
   id: string;
   name: string;
   category: string;
+  videoUrl?: string;
+  images?: string[];
 };
 
 export type Belt = {

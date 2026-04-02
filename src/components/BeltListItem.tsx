@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { type Belt, getBeltWithCumulativeData } from '@/lib/data';
+import { type Belt, type Technique, getBeltWithCumulativeData } from '@/lib/data';
 
 interface BeltListItemProps {
   belt: Belt;
@@ -17,7 +17,7 @@ export function BeltListItem({ belt, globalCompletedIds = new Set(), completedHi
   
   const totalCount = aggregatedTechniques.length + (hasHistory ? 1 : 0);
   const completedCount = 
-    aggregatedTechniques.filter(t => globalCompletedIds.has(t.id)).length + 
+    aggregatedTechniques.filter((t: Technique) => globalCompletedIds.has(t.id)).length + 
     (hasHistory && isHistoryCompleted ? 1 : 0);
     
   const progressPercentage = totalCount === 0 ? 0 : Math.round((completedCount / totalCount) * 100);
@@ -27,7 +27,7 @@ export function BeltListItem({ belt, globalCompletedIds = new Set(), completedHi
       
       {/* Dual Color Header Strip */}
       <div className="h-4 w-full flex border-b-4 border-black shrink-0" aria-hidden="true">
-         {belt.colors.map((colorClass, idx) => (
+         {belt.colors.map((colorClass: string, idx: number) => (
            <div key={idx} className={`flex-1 h-full ${colorClass}`} />
          ))}
       </div>
