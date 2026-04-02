@@ -1,14 +1,13 @@
 import { notFound } from 'next/navigation';
-import { getBeltData } from '@/lib/data';
+import { getBeltWithCumulativeData, type Technique } from '@/lib/data';
 import { ExpandableHistory } from '@/components/ExpandableHistory';
 import { TechniqueAccordion } from '@/components/TechniqueAccordion';
 import Link from 'next/link';
-import { TechniqueCategory } from '@/lib/data';
 import { createClient } from '@/utils/supabase/server';
 
 export default async function BeltPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const belt = getBeltData(slug);
+  const belt = getBeltWithCumulativeData(slug);
 
   if (!belt) {
     notFound();
@@ -41,7 +40,7 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
     }
   }
 
-  const techniques = belt.allTechniques;
+  const techniques = belt.techniques;
   const hasHistory = belt.history.length > 0;
   
   // Real Math Mapping
@@ -50,8 +49,8 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
   const completedCount = completedTechsCount + (hasHistory && isHistoryCompleted ? 1 : 0);
   const progressPercentage = totalCount === 0 ? 0 : Math.round((completedCount / totalCount) * 100);
 
-  // Group techniques by category
-  const categories: TechniqueCategory[] = ["Ukemi", "Nage-waza", "Katame-waza"];
+  // Group techniques by category dynamically from current techniques
+  const categories = Array.from(new Set(techniques.map(t => t.category)));
   
   const groupedTechniques = categories.map(category => ({
     category,

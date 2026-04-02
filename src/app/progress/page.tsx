@@ -1,5 +1,5 @@
 import { createClient } from '@/utils/supabase/server';
-import { BELTS } from '@/lib/data';
+import { BELTS, getBeltWithCumulativeData } from '@/lib/data';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
@@ -26,7 +26,9 @@ export default async function ProgressPage() {
     (progressData || []).filter(p => p.type === 'history').map(p => p.reference_id)
   );
 
-  const totalTechniques = BELTS.flatMap(b => b.techniques).length;
+  // Calculate unique global points
+  const allUniqueTechniques = new Set(BELTS.flatMap(b => b.techniques.map(t => t.id)));
+  const totalTechniques = allUniqueTechniques.size;
   const totalHistories = BELTS.filter(b => b.history.length > 0).length;
   const totalAvailablePoints = totalTechniques + totalHistories;
   
@@ -71,8 +73,11 @@ export default async function ProgressPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-8">
           {BELTS.map(belt => {
-             const beltTechs = belt.techniques;
-             const hasHistory = belt.history.length > 0;
+             const aggregatedData = getBeltWithCumulativeData(belt.id);
+             if (!aggregatedData) return null;
+
+             const beltTechs = aggregatedData.techniques;
+             const hasHistory = aggregatedData.history.length > 0;
              const historyDone = completedHistoryIds.has(belt.id);
              
              const totalInBelt = beltTechs.length + (hasHistory ? 1 : 0);

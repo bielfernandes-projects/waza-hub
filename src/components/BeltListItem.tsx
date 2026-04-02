@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { type Belt, getTechniquesForBelt } from '@/lib/data';
+import { type Belt, getBeltWithCumulativeData } from '@/lib/data';
 
 interface BeltListItemProps {
   belt: Belt;
@@ -8,7 +8,9 @@ interface BeltListItemProps {
 }
 
 export function BeltListItem({ belt, globalCompletedIds = new Set(), completedHistoryIds = new Set() }: BeltListItemProps) {
-  const aggregatedTechniques = getTechniquesForBelt(belt.id);
+  const aggregatedData = getBeltWithCumulativeData(belt.id);
+  const aggregatedTechniques = aggregatedData?.techniques || [];
+  const aggregatedHistory = aggregatedData?.history || [];
   
   const hasHistory = belt.history.length > 0;
   const isHistoryCompleted = completedHistoryIds.has(belt.id);
