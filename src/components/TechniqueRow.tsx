@@ -15,6 +15,61 @@ export function TechniqueRow({ technique, isCompleted, isOpen = false, onToggleO
   const [completed, setCompleted] = useState(isCompleted);
   const [isPending, startTransition] = useTransition();
 
+  const [sbMedia, setSbMedia] = useState<{ videoId?: string | null; images: string[] } | null>(null);
+  const [modalImage, setModalImage] = useState<string | null>(null);
+
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setModalImage(null);
+    };
+    if (modalImage) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [modalImage]);
+
+  useEffect(() => {
+    let mounted = true;
+    
+    const fetchSbMedia = async () => {
+      // Lazy load supabase client
+      const { createClient } = await import('@/utils/supabase/client');
+      const supabase = createClient();
+      
+      try {
+        const [{ data: vData }, { data: iData }] = await Promise.all([
+          supabase.from('technique_videos').select('youtube_id').eq('technique_id', technique.id).maybeSingle(),
+          supabase.from('technique_images').select('image_path').eq('technique_id', technique.id).order('order_index', { ascending: true })
+        ]);
+
+        if (mounted && (vData || (iData && iData.length > 0))) {
+          const imagesUrls = iData?.map((img: any) => supabase.storage.from('technique-media').getPublicUrl(img.image_path).data.publicUrl) || [];
+          setSbMedia({
+            videoId: vData?.youtube_id,
+            images: imagesUrls
+          });
+        }
+      } catch (err) {
+        console.error("Failed to fetch media for", technique.id, err);
+      }
+    };
+    
+    fetchSbMedia();
+    return () => { mounted = false; };
+  }, [technique.id]);
+
+  // Determine final display variables safely
+  const displayVideoUrl = sbMedia?.videoId 
+    ? `https://www.youtube.com/embed/${sbMedia.videoId}` 
+    : technique.videoUrl;
+    
+  const displayImages = sbMedia && sbMedia.images.length > 0 
+    ? sbMedia.images 
+    : technique.images || [];
+
+  const hasMedia = !!displayVideoUrl || displayImages.length > 0;
+
   // Sync with server state if it changes unexpectedly due to revalidatePath
   useEffect(() => {
     setCompleted(isCompleted);
@@ -40,7 +95,8 @@ export function TechniqueRow({ technique, isCompleted, isOpen = false, onToggleO
   };
 
   return (
-    <div className={`border-b-2 border-black transition-colors ${completed ? 'bg-green-50' : 'bg-white'}`}>
+    <>
+      <div className={`border-b-2 border-black transition-colors ${completed ? 'bg-green-50' : 'bg-white'}`}>
       <div className="flex items-center gap-4 p-4 pr-6">
         {/* Completion Checkbox */}
         <button 
@@ -74,11 +130,11 @@ export function TechniqueRow({ technique, isCompleted, isOpen = false, onToggleO
         </div>
 
         {/* Video Toggle Chevron */}
-        {technique.videoUrl && (
+        {hasMedia && (
           <button 
             onClick={onToggleOpen}
             className={`w-10 h-10 border-2 border-black flex items-center justify-center flex-shrink-0 transition-all duration-300 ${isOpen ? 'bg-black text-white' : 'bg-white text-black hover:bg-neutral-100'}`}
-            aria-label="Expandir vídeo"
+            aria-label="Expandir mídia"
           >
             <svg className={`w-6 h-6 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={3} d="M19 9l-7 7-7-7" />
@@ -87,23 +143,56 @@ export function TechniqueRow({ technique, isCompleted, isOpen = false, onToggleO
         )}
       </div>
 
-      {/* Expanded Video Embed */}
-      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen && technique.videoUrl ? 'max-h-[800px] border-t-2 border-black' : 'max-h-0'}`}>
-        {technique.videoUrl && (
-          <div className="p-4 bg-neutral-100 flex flex-col gap-4">
-            <div className="relative w-full aspect-video border-4 border-black bg-black flex items-center justify-center">
-              {technique.videoUrl === "https://www.youtube.com/embed/example" ? (
-                <span className="font-bold uppercase tracking-widest text-neutral-400">Vídeo Placeholder</span>
-              ) : (
-                <iframe
-                  src={technique.videoUrl}
-                  title={`YouTube video player for ${technique.name}`}
-                  className="absolute top-0 left-0 w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              )}
-            </div>
+      {/* Expanded Media Area */}
+      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen && hasMedia ? 'max-h-[2000px] border-t-2 border-black' : 'max-h-0'}`}>
+        {hasMedia && (
+          <div className="p-4 bg-neutral-100 flex flex-col gap-6">
+            {/* Video Rendering (Moved to TOP) */}
+            {displayVideoUrl && (
+              <div className="relative w-full aspect-video border-4 border-black bg-black flex items-center justify-center">
+                {displayVideoUrl === "https://www.youtube.com/embed/example" ? (
+                  <span className="font-bold uppercase tracking-widest text-neutral-400">Vídeo Placeholder</span>
+                ) : (
+                  <iframe
+                    src={displayVideoUrl}
+                    title={`YouTube video player for ${technique.name}`}
+                    className="absolute top-0 left-0 w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                )}
+              </div>
+            )}
+            
+            {/* Images Rendering - Horizontal Carousel */}
+            {displayImages.length > 0 && (
+              <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory hide-scrollbar border-b-2 border-transparent hover:border-black/10 transition-colors">
+                {displayImages.map((imageUrl, idx) => (
+                  <div 
+                    key={idx} 
+                    className="flex-none w-64 h-64 border-4 border-black bg-neutral-100 snap-center relative overflow-hidden group cursor-pointer"
+                    onClick={() => setModalImage(imageUrl)}
+                  >
+                     {/* eslint-disable-next-line @next/next/no-img-element */}
+                     <img 
+                       src={imageUrl} 
+                       alt={`Passo ${idx + 1} de ${technique.name}`} 
+                       className="w-full h-full object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+                       loading="lazy"
+                     />
+                     <div className="absolute top-2 left-2 bg-black text-white px-2 py-1 text-xs font-black border-2 border-white pointer-events-none">
+                       {idx + 1}
+                     </div>
+                     
+                     <div className="absolute bottom-2 right-2 bg-black text-white p-1.5 border-2 border-white opacity-0 group-hover:opacity-100 transition-opacity">
+                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                       </svg>
+                     </div>
+                  </div>
+                ))}
+              </div>
+            )}
             
             {/* Fallback marking explicitly available */}
             {!completed && (
@@ -125,6 +214,35 @@ export function TechniqueRow({ technique, isCompleted, isOpen = false, onToggleO
         )}
       </div>
     </div>
+      
+      {/* Modal / Image Popup */}
+      {modalImage && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm"
+          onClick={() => setModalImage(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 w-12 h-12 bg-white text-black font-black text-2xl border-4 border-black flex items-center justify-center hover:bg-neutral-200 transition-colors z-[110]"
+            onClick={(e) => { e.stopPropagation(); setModalImage(null); }}
+            aria-label="Fechar pop-up"
+          >
+            &times;
+          </button>
+          
+          <div 
+            className="relative w-full max-w-5xl h-full max-h-[90vh] flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src={modalImage} 
+              alt="Visualização expandida" 
+              className="max-w-full max-h-full object-contain border-4 border-black bg-white" 
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
