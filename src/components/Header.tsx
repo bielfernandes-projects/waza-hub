@@ -61,7 +61,7 @@ export function Header() {
 
           {/* Centro: Título ou Logo */}
           <div className="flex-1 flex items-center justify-center">
-            <Link href="/" onClick={closeSidebar} className="relative h-16 w-32 hover:scale-105 transition-transform">
+            <Link href="/" onClick={closeSidebar} className="relative h-20 w-48 hover:scale-105 transition-transform">
               <Image 
                 src="/logo.png" 
                 alt="WazaHub Logo"
