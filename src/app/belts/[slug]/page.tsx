@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getBeltWithCumulativeData, type Technique } from '@/lib/data';
 import { ExpandableHistory } from '@/components/ExpandableHistory';
-import { TechniqueAccordion } from '@/components/TechniqueAccordion';
+import { CategoryAccordion } from '@/components/CategoryAccordion';
 import Link from 'next/link';
 import { createClient } from '@/utils/supabase/server';
 
@@ -131,15 +131,12 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
              </div>
           ) : (
             groupedTechniques.map((group) => (
-              <div key={group.category} className="border-b-4 border-black last:border-b-0">
-                <h3 className="text-xl font-black p-4 bg-neutral-200 uppercase tracking-widest border-b-2 border-black sticky top-[64px] z-20">
-                  {group.category}
-                </h3>
-                <TechniqueAccordion 
-                  techniques={group.techniques} 
-                  completedIds={completedTechniqueIds} 
-                />
-              </div>
+              <CategoryAccordion 
+                key={group.category}
+                category={group.category}
+                techniques={group.techniques}
+                completedIds={completedTechniqueIds}
+              />
             ))
           )}
         </div>
