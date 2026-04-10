@@ -61,9 +61,9 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
   return (
     <article className="flex flex-col bg-white">
       {/* Header Profile with Back Button */}
-      <div className={`border-b-4 border-black relative overflow-hidden ${belt.id === 'preta' ? 'bg-black' : ''}`}>
+      <div className={`border-b-4 border-black relative overflow-hidden ${belt.id === 'preta' ? 'bg-black' : 'bg-white'}`}>
         {/* Dual Colors Strip via absolute backgrounds */}
-        <div className={`absolute inset-0 z-0 flex ${belt.id === 'preta' ? 'opacity-100' : 'opacity-30'} pointer-events-none`} aria-hidden="true">
+        <div className="absolute inset-0 z-0 flex opacity-100 pointer-events-none" aria-hidden="true">
           {belt.colors.map((c, i) => (
              <div key={i} className={`flex-1 h-full ${c}`} />
           ))}
@@ -73,7 +73,7 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
           <Link 
             href="/" 
             className={`inline-flex items-center gap-2 font-black uppercase text-sm tracking-widest px-4 py-2 border-2 transition-colors mb-6 shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none ${
-              belt.id === 'preta' 
+              ['azul', 'verde', 'roxa', 'marrom', 'preta', 'cinza-azul'].includes(belt.id)
                 ? 'bg-white text-black border-white hover:bg-neutral-200' 
                 : 'bg-black text-white border-black hover:bg-neutral-800'
             }`}
@@ -84,7 +84,11 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
             Voltar
           </Link>
 
-          <h1 className={`text-6xl font-black uppercase tracking-tighter mb-4 drop-shadow-sm ${belt.id === 'preta' ? 'text-white' : 'text-black mix-blend-multiply'}`}>
+          <h1 className={`text-6xl font-black uppercase tracking-tighter mb-4 drop-shadow-md ${
+            ['azul', 'verde', 'roxa', 'marrom', 'preta', 'cinza-azul'].includes(belt.id) 
+              ? 'text-white' 
+              : 'text-black'
+          }`}>
             Faixa {belt.name}
           </h1>
 
