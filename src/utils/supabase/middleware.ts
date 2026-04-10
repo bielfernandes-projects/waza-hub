@@ -37,7 +37,7 @@ export const updateSession = async (request: NextRequest) => {
 
     const { pathname } = request.nextUrl
 
-    const publicPaths = ['/login', '/signup', '/forgot-password', '/reset-password']
+    const publicPaths = ['/login', '/signup', '/forgot-password', '/reset-password', '/auth']
     const isPublicPath = publicPaths.some(p => pathname.startsWith(p))
 
     if (!user && !isPublicPath) {
