@@ -21,7 +21,7 @@ export function HeaderAuth() {
   return (
     <button 
       onClick={handleLogout}
-      className="text-sm font-bold uppercase tracking-wider border-2 border-black px-3 py-1 bg-white hover:bg-black hover:text-white transition-colors"
+      className="w-full text-left border-l-4 border-black py-3 pl-4 text-2xl font-black uppercase tracking-tighter transition-all hover:bg-red-50 hover:text-red-600 hover:border-red-600"
     >
       Sair
     </button>

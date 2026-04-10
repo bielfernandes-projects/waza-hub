@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -13,6 +13,17 @@ export function Header() {
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const closeSidebar = () => setIsSidebarOpen(false);
+
+  useEffect(() => {
+    if (isSidebarOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isSidebarOpen]);
 
   const navLinks = [
     { name: 'Início', href: '/' },
@@ -123,11 +134,13 @@ export function Header() {
               </Link>
             )
           })}
+          <div className="mt-4 pt-4 border-t-2 border-black/10">
+            <HeaderAuth />
+          </div>
         </nav>
         
-        <div className="p-6 border-t-2 border-black mt-auto flex justify-between items-center bg-neutral-50">
-           <span className="font-bold text-xs uppercase tracking-widest opacity-60">Sessão Ativa</span>
-           <HeaderAuth />
+        <div className="p-6 border-t-2 border-black mt-auto bg-neutral-50">
+           <span className="font-bold text-[10px] uppercase tracking-widest opacity-40">Waza-Hub v1.0</span>
         </div>
       </div>
     </>
