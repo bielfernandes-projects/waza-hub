@@ -51,22 +51,26 @@ const rawData = {
         {
           "id": "ushiro-ukemi",
           "name": "Ushiro Ukemi",
-          "category": "Ukemi"
+          "category": "Ukemi",
+          "translation": "Queda para trás"
         },
         {
           "id": "yoko-ukemi",
           "name": "Yoko Ukemi",
-          "category": "Ukemi"
+          "category": "Ukemi",
+          "translation": "Queda lateral"
         },
         {
           "id": "o-soto-gari",
           "name": "O-Soto-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande ceifada externa"
         },
         {
           "id": "kesa-gatame",
           "name": "Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção fundamental em ângulo"
         }
       ]
     },
@@ -83,37 +87,44 @@ const rawData = {
         {
           "id": "ushiro-ukemi",
           "name": "Ushiro Ukemi",
-          "category": "Ukemi"
+          "category": "Ukemi",
+          "translation": "Queda para trás"
         },
         {
           "id": "yoko-ukemi",
           "name": "Yoko Ukemi",
-          "category": "Ukemi"
+          "category": "Ukemi",
+          "translation": "Queda lateral"
         },
         {
           "id": "zenpo-kaiten-ukemi",
           "name": "Zenpo-Kaiten-Ukemi",
-          "category": "Ukemi"
+          "category": "Ukemi",
+          "translation": "Rolamento para frente"
         },
         {
           "id": "o-soto-gari",
           "name": "O-Soto-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande ceifada externa"
         },
         {
           "id": "o-uchi-gari",
           "name": "O-Uchi-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande ceifada interna"
         },
         {
           "id": "kesa-gatame",
           "name": "Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção fundamental em ângulo"
         },
         {
           "id": "kuzure-kesa-gatame",
           "name": "Kuzure-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção em ângulo"
         }
       ]
     },
@@ -132,52 +143,62 @@ const rawData = {
         {
           "id": "formas-kumi-kata",
           "name": "Formas de pegar no Judogi",
-          "category": "Kumi-kata"
+          "category": "Kumi-kata",
+          "translation": "Formas de pegada"
         },
         {
           "id": "ushiro-ukemi",
           "name": "Ushiro Ukemi",
-          "category": "Ukemi"
+          "category": "Ukemi",
+          "translation": "Queda para trás"
         },
         {
           "id": "yoko-ukemi",
           "name": "Yoko Ukemi",
-          "category": "Ukemi"
+          "category": "Ukemi",
+          "translation": "Queda lateral"
         },
         {
           "id": "zenpo-kaiten-ukemi",
           "name": "Zenpo-Kaiten-Ukemi",
-          "category": "Ukemi"
+          "category": "Ukemi",
+          "translation": "Rolamento para frente"
         },
         {
           "id": "o-soto-gari",
           "name": "O-Soto-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande ceifada externa"
         },
         {
           "id": "o-uchi-gari",
           "name": "O-Uchi-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande ceifada interna"
         },
         {
           "id": "uki-goshi",
           "name": "Uki-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Quadril flutuante"
         },
         {
           "id": "kesa-gatame",
           "name": "Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção fundamental em ângulo"
         },
         {
           "id": "kuzure-kesa-gatame",
           "name": "Kuzure-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção em ângulo"
         },
         {
           "id": "yoko-shiho-gatame",
           "name": "Yoko-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção lateral com quatro apoios"
         }
       ]
     },
@@ -195,47 +216,56 @@ const rawData = {
         {
           "id": "happo-kuzushi",
           "name": "Happo-Kuzushi (8 direções de desequilíbrio)",
-          "category": "Kuzushi"
+          "category": "Kuzushi",
+          "translation": "8 direções de desequilíbrio"
         },
         {
           "id": "o-soto-gari",
           "name": "O-Soto-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande ceifada externa"
         },
         {
           "id": "o-uchi-gari",
           "name": "O-Uchi-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande ceifada interna"
         },
         {
           "id": "uki-goshi",
           "name": "Uki-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Quadril flutuante"
         },
         {
           "id": "de-ashi-harai",
           "name": "De-Ashi-Harai",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Varrer com o pé avançado"
         },
         {
           "id": "renraku-ouchi-deashi",
           "name": "O-Uchi-Gari > De-Ashi-Harai",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-uchi-gari > De-ashi-harai"
         },
         {
           "id": "kesa-gatame",
           "name": "Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção fundamental em ângulo"
         },
         {
           "id": "kuzure-kesa-gatame",
           "name": "Kuzure-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção em ângulo"
         },
         {
           "id": "yoko-shiho-gatame",
           "name": "Yoko-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção lateral com quatro apoios"
         }
       ]
     },
@@ -252,72 +282,86 @@ const rawData = {
         {
           "id": "shizen-hon-tai",
           "name": "Shizen-Hon-Tai (Migi e Hidari)",
-          "category": "Shisei"
+          "category": "Shisei",
+          "translation": "Postura natural"
         },
         {
           "id": "jigo-hon-tai",
           "name": "Jigo-Hon-Tai (Migi e Hidari)",
-          "category": "Shisei"
+          "category": "Shisei",
+          "translation": "Postura defensiva"
         },
         {
           "id": "o-soto-gari",
           "name": "O-Soto-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande ceifada externa"
         },
         {
           "id": "o-uchi-gari",
           "name": "O-Uchi-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande ceifada interna"
         },
         {
           "id": "uki-goshi",
           "name": "Uki-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Quadril flutuante"
         },
         {
           "id": "de-ashi-harai",
           "name": "De-Ashi-Harai",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Varrer com o pé avançado"
         },
         {
           "id": "o-goshi",
           "name": "O-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande quadril"
         },
         {
           "id": "kesa-gatame",
           "name": "Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção fundamental em ângulo"
         },
         {
           "id": "kuzure-kesa-gatame",
           "name": "Kuzure-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção em ângulo"
         },
         {
           "id": "yoko-shiho-gatame",
           "name": "Yoko-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção lateral com quatro apoios"
         },
         {
           "id": "kami-shiho-gatame",
           "name": "Kami-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção acima com quatro apoios"
         },
         {
           "id": "renraku-ouchi-deashi",
           "name": "O-Uchi-Gari > De-Ashi-Harai",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-uchi-gari > De-ashi-harai"
         },
         {
           "id": "renraku-osoto-kesa",
           "name": "O-Soto-Gari > Kesa-Gatame",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-soto-gari > Kesa-gatame"
         },
         {
           "id": "kaeshi-ouchi-ogoshi",
           "name": "O-Uchi-Gari > O-Goshi",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: O-uchi-gari > O-goshi"
         }
       ]
     },
@@ -333,92 +377,110 @@ const rawData = {
         {
           "id": "ayumi-ashi",
           "name": "Ayumi-Ashi",
-          "category": "Shintai"
+          "category": "Shintai",
+          "translation": "Andar normal"
         },
         {
           "id": "tsugi-ashi",
           "name": "Tsugi-Ashi",
-          "category": "Shintai"
+          "category": "Shintai",
+          "translation": "Andar acompanhando o pé"
         },
         {
           "id": "o-soto-gari",
           "name": "O-Soto-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande ceifada externa"
         },
         {
           "id": "o-uchi-gari",
           "name": "O-Uchi-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande ceifada interna"
         },
         {
           "id": "uki-goshi",
           "name": "Uki-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Quadril flutuante"
         },
         {
           "id": "de-ashi-harai",
           "name": "De-Ashi-Harai",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Varrer com o pé avançado"
         },
         {
           "id": "o-goshi",
           "name": "O-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande quadril"
         },
         {
           "id": "seoi-nage",
           "name": "Seoi-Nage",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Projeção por cima dos ombros"
         },
         {
           "id": "kesa-gatame",
           "name": "Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção fundamental em ângulo"
         },
         {
           "id": "kuzure-kesa-gatame",
           "name": "Kuzure-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção em ângulo"
         },
         {
           "id": "yoko-shiho-gatame",
           "name": "Yoko-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção lateral com quatro apoios"
         },
         {
           "id": "kami-shiho-gatame",
           "name": "Kami-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção acima com quatro apoios"
         },
         {
           "id": "ushiro-kesa-gatame",
           "name": "Ushiro-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção em ângulo por trás"
         },
         {
           "id": "renraku-ouchi-deashi",
           "name": "O-Uchi-Gari > De-Ashi-Harai",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-uchi-gari > De-ashi-harai"
         },
         {
           "id": "renraku-osoto-kesa",
           "name": "O-Soto-Gari > Kesa-Gatame",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-soto-gari > Kesa-gatame"
         },
         {
           "id": "renraku-deashi-osoto",
           "name": "De-Ashi-Harai > O-Soto-Gari",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: De-ashi-harai > O-soto-gari"
         },
         {
           "id": "kaeshi-ouchi-ogoshi",
           "name": "O-Uchi-Gari > O-Goshi",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: O-uchi-gari > O-goshi"
         },
         {
           "id": "kaeshi-ouchi-seoi",
           "name": "O-Uchi-Gari > Seoi-Nage",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: O-uchi-gari > Seoi-nage"
         }
       ]
     },
@@ -434,127 +496,152 @@ const rawData = {
         {
           "id": "mae-sabaki",
           "name": "Mae-Sabaki (Migi e Hidari)",
-          "category": "Tai-sabaki"
+          "category": "Tai-sabaki",
+          "translation": "Esquiva para frente"
         },
         {
           "id": "ushiro-sabaki",
           "name": "Ushiro-Sabaki (Migi e Hidari)",
-          "category": "Tai-sabaki"
+          "category": "Tai-sabaki",
+          "translation": "Esquiva para trás"
         },
         {
           "id": "mae-mawari-sabaki",
           "name": "Mae-Mawari-Sabaki (Migi e Hidari)",
-          "category": "Tai-sabaki"
+          "category": "Tai-sabaki",
+          "translation": "Esquiva circular para frente"
         },
         {
           "id": "ushiro-mawari-sabaki",
           "name": "Ushiro-Mawari-Sabaki (Migi e Hidari)",
-          "category": "Tai-sabaki"
+          "category": "Tai-sabaki",
+          "translation": "Esquiva circular para trás"
         },
         {
           "id": "o-soto-gari",
           "name": "O-Soto-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande ceifada externa"
         },
         {
           "id": "o-uchi-gari",
           "name": "O-Uchi-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande ceifada interna"
         },
         {
           "id": "uki-goshi",
           "name": "Uki-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Quadril flutuante"
         },
         {
           "id": "de-ashi-harai",
           "name": "De-Ashi-Harai",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Varrer com o pé avançado"
         },
         {
           "id": "o-goshi",
           "name": "O-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande quadril"
         },
         {
           "id": "seoi-nage",
           "name": "Seoi-Nage",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Projeção por cima dos ombros"
         },
         {
           "id": "hiza-guruma",
           "name": "Hiza-Guruma",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Giro de joelho"
         },
         {
           "id": "sasae-tsuri-komi-ashi",
           "name": "Sasae-Tsuri-Komi-Ashi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Pescar entrando com o sustento do pé"
         },
         {
           "id": "kesa-gatame",
           "name": "Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção fundamental em ângulo"
         },
         {
           "id": "kuzure-kesa-gatame",
           "name": "Kuzure-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção em ângulo"
         },
         {
           "id": "yoko-shiho-gatame",
           "name": "Yoko-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção lateral com quatro apoios"
         },
         {
           "id": "kami-shiho-gatame",
           "name": "Kami-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção acima com quatro apoios"
         },
         {
           "id": "ushiro-kesa-gatame",
           "name": "Ushiro-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção em ângulo por trás"
         },
         {
           "id": "tate-shiho-gatame",
           "name": "Tate-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção com quatro apoios em escudo"
         },
         {
           "id": "renraku-ouchi-deashi",
           "name": "O-Uchi-Gari > De-Ashi-Harai",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-uchi-gari > De-ashi-harai"
         },
         {
           "id": "renraku-osoto-kesa",
           "name": "O-Soto-Gari > Kesa-Gatame",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-soto-gari > Kesa-gatame"
         },
         {
           "id": "renraku-deashi-osoto",
           "name": "De-Ashi-Harai > O-Soto-Gari",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: De-ashi-harai > O-soto-gari"
         },
         {
           "id": "renraku-hiza-seoi",
           "name": "Hiza-Guruma > Seoi-Nage",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: Hiza-guruma > Seoi-nage"
         },
         {
           "id": "kaeshi-ouchi-ogoshi",
           "name": "O-Uchi-Gari > O-Goshi",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: O-uchi-gari > O-goshi"
         },
         {
           "id": "kaeshi-ouchi-seoi",
           "name": "O-Uchi-Gari > Seoi-Nage",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: O-uchi-gari > Seoi-nage"
         },
         {
           "id": "kaeshi-sasae-deashi",
           "name": "Sasae-Tsuri-Komi-Ashi > De-Ashi-Harai",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: Sasae-tsuri > De-ashi-harai"
         }
       ]
     },
@@ -570,122 +657,146 @@ const rawData = {
         {
           "id": "ko-soto-gari",
           "name": "Ko-Soto-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Pequena ceifada externa"
         },
         {
           "id": "ko-uchi-gari",
           "name": "Ko-Uchi-Gari",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Pequena ceifada interna"
         },
         {
           "id": "koshi-guruma",
           "name": "Koshi-Guruma",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Giro de quadril"
         },
         {
           "id": "tsuri-komi-goshi",
           "name": "Tsuri-Komi-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Pescar entrando no quadril"
         },
         {
           "id": "okuri-ashi-harai",
           "name": "Okuri-Ashi-Harai",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Enfrentar e varrer com o pé"
         },
         {
           "id": "tai-otoshi",
           "name": "Tai-Otoshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Queda do corpo"
         },
         {
           "id": "harai-goshi",
           "name": "Harai-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Varrer o quadril"
         },
         {
           "id": "uchi-mata",
           "name": "Uchi-Mata",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Parte interna da coxa"
         },
         {
           "id": "kesa-gatame",
           "name": "Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção fundamental em ângulo"
         },
         {
           "id": "kuzure-kesa-gatame",
           "name": "Kuzure-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção em ângulo"
         },
         {
           "id": "yoko-shiho-gatame",
           "name": "Yoko-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção lateral com quatro apoios"
         },
         {
           "id": "kami-shiho-gatame",
           "name": "Kami-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção acima com quatro apoios"
         },
         {
           "id": "ushiro-kesa-gatame",
           "name": "Ushiro-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção em ângulo por trás"
         },
         {
           "id": "tate-shiho-gatame",
           "name": "Tate-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção com quatro apoios em escudo"
         },
         {
           "id": "kuzure-kami-shiho-gatame",
           "name": "Kuzure-Kami-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção acima com quatro apoios"
         },
         {
           "id": "renraku-ouchi-deashi",
           "name": "O-Uchi-Gari > De-Ashi-Harai",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-uchi-gari > De-ashi-harai"
         },
         {
           "id": "renraku-osoto-kesa",
           "name": "O-Soto-Gari > Kesa-Gatame",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-soto-gari > Kesa-gatame"
         },
         {
           "id": "renraku-deashi-osoto",
           "name": "De-Ashi-Harai > O-Soto-Gari",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: De-ashi-harai > O-soto-gari"
         },
         {
           "id": "renraku-hiza-seoi",
           "name": "Hiza-Guruma > Seoi-Nage",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: Hiza-guruma > Seoi-nage"
         },
         {
           "id": "renraku-uchimata-kouchi",
           "name": "Uchi-Mata > Ko-Uchi-Gari",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: Uchi-mata > Ko-uchi-gari"
         },
         {
           "id": "kaeshi-ouchi-ogoshi",
           "name": "O-Uchi-Gari > O-Goshi",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: O-uchi-gari > O-goshi"
         },
         {
           "id": "kaeshi-ouchi-seoi",
           "name": "O-Uchi-Gari > Seoi-Nage",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: O-uchi-gari > Seoi-nage"
         },
         {
           "id": "kaeshi-sasae-deashi",
           "name": "Sasae-Tsuri-Komi-Ashi > De-Ashi-Harai",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: Sasae-tsuri > De-ashi-harai"
         },
         {
           "id": "kaeshi-ukigoshi-koshiguruma",
           "name": "Uki-Goshi > Koshi-Guruma",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: Uki-goshi > Koshi-guruma"
         }
       ]
     },
@@ -701,117 +812,140 @@ const rawData = {
         {
           "id": "ko-soto-gake",
           "name": "Ko-Soto-Gake",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Pequena enganchada externa"
         },
         {
           "id": "tsuri-goshi",
           "name": "Tsuri-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Pescar o quadril"
         },
         {
           "id": "yoko-otoshi",
           "name": "Yoko-Otoshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Queda lateral"
         },
         {
           "id": "ashi-guruma",
           "name": "Ashi-Guruma",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Giro do pé"
         },
         {
           "id": "hane-goshi",
           "name": "Hane-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Quadris e perna"
         },
         {
           "id": "tomoe-nage",
           "name": "Tomoe-Nage",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Projeção em circulo"
         },
         {
           "id": "kata-guruma",
           "name": "Kata-Guruma",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Giro de ombro"
         },
         {
           "id": "harai-tsuri-komi-ashi",
           "name": "Harai-Tsuri-Komi-Ashi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Pescar entrando e varrer com o pé"
         },
         {
           "id": "uki-otoshi",
           "name": "Uki-Otoshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Queda flutuante"
         },
         {
           "id": "seoi-nage",
           "name": "Seoi-Nage",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Projeção por cima dos ombros"
         },
         {
           "id": "kesa-gatame",
           "name": "Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção fundamental em ângulo"
         },
         {
           "id": "kuzure-kesa-gatame",
           "name": "Kuzure-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção em ângulo"
         },
         {
           "id": "yoko-shiho-gatame",
           "name": "Yoko-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção lateral com quatro apoios"
         },
         {
           "id": "kami-shiho-gatame",
           "name": "Kami-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção acima com quatro apoios"
         },
         {
           "id": "ushiro-kesa-gatame",
           "name": "Ushiro-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção em ângulo por trás"
         },
         {
           "id": "tate-shiho-gatame",
           "name": "Tate-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção com quatro apoios em escudo"
         },
         {
           "id": "kuzure-kami-shiho-gatame",
           "name": "Kuzure-Kami-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção acima com quatro apoios"
         },
         {
           "id": "kata-gatame",
           "name": "Kata-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção pelo (com) ombro"
         },
         {
           "id": "renraku-ouchi-deashi",
           "name": "O-Uchi-Gari > De-Ashi-Harai",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-uchi-gari > De-ashi-harai"
         },
         {
           "id": "renraku-osoto-kesa",
           "name": "O-Soto-Gari > Kesa-Gatame",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-soto-gari > Kesa-gatame"
         },
         {
           "id": "renraku-deashi-osoto",
           "name": "De-Ashi-Harai > O-Soto-Gari",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: De-ashi-harai > O-soto-gari"
         },
         {
           "id": "renraku-hiza-seoi",
           "name": "Hiza-Guruma > Seoi-Nage",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: Hiza-guruma > Seoi-nage"
         },
         {
           "id": "renraku-uchimata-kouchi",
           "name": "Uchi-Mata > Ko-Uchi-Gari",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: Uchi-mata > Ko-uchi-gari"
         },
         {
           "id": "renraku-haraigoshi-osoto",
@@ -821,22 +955,26 @@ const rawData = {
         {
           "id": "kaeshi-ouchi-ogoshi",
           "name": "O-Uchi-Gari > O-Goshi",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: O-uchi-gari > O-goshi"
         },
         {
           "id": "kaeshi-ouchi-seoi",
           "name": "O-Uchi-Gari > Seoi-Nage",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: O-uchi-gari > Seoi-nage"
         },
         {
           "id": "kaeshi-sasae-deashi",
           "name": "Sasae-Tsuri-Komi-Ashi > De-Ashi-Harai",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: Sasae-tsuri > De-ashi-harai"
         },
         {
           "id": "kaeshi-ukigoshi-koshiguruma",
           "name": "Uki-Goshi > Koshi-Guruma",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: Uki-goshi > Koshi-guruma"
         },
         {
           "id": "kaeshi-ouchi-tomoenage",
@@ -856,97 +994,116 @@ const rawData = {
         {
           "id": "sumi-gaeshi",
           "name": "Sumi-Gaeshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Troca de canto"
         },
         {
           "id": "tani-otoshi",
           "name": "Tani-Otoshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Queda no vale"
         },
         {
           "id": "hane-makikomi",
           "name": "Hane-Makikomi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Entrar enrolando com a perna"
         },
         {
           "id": "sukui-nage",
           "name": "Sukui-Nage",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Colher e projetar"
         },
         {
           "id": "utsuri-goshi",
           "name": "Utsuri-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Remover o quadril"
         },
         {
           "id": "o-guruma",
           "name": "O-Guruma",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande giro"
         },
         {
           "id": "soto-makikomi",
           "name": "Soto-Makikomi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Enrolar entrando externamente"
         },
         {
           "id": "uki-otoshi",
           "name": "Uki-Otoshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Queda flutuante"
         },
         {
           "id": "uki-goshi",
           "name": "Uki-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Quadril flutuante"
         },
         {
           "id": "harai-goshi",
           "name": "Harai-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Varrer o quadril"
         },
         {
           "id": "tsuri-komi-goshi",
           "name": "Tsuri-Komi-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Pescar entrando no quadril"
         },
         {
           "id": "kesa-gatame",
           "name": "Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção fundamental em ângulo"
         },
         {
           "id": "kuzure-kesa-gatame",
           "name": "Kuzure-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção em ângulo"
         },
         {
           "id": "yoko-shiho-gatame",
           "name": "Yoko-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção lateral com quatro apoios"
         },
         {
           "id": "kami-shiho-gatame",
           "name": "Kami-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção acima com quatro apoios"
         },
         {
           "id": "ushiro-kesa-gatame",
           "name": "Ushiro-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção em ângulo por trás"
         },
         {
           "id": "tate-shiho-gatame",
           "name": "Tate-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção com quatro apoios em escudo"
         },
         {
           "id": "kuzure-kami-shiho-gatame",
           "name": "Kuzure-Kami-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção acima com quatro apoios"
         },
         {
           "id": "kata-gatame",
           "name": "Kata-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção pelo (com) ombro"
         },
         {
           "id": "ura-gatame",
@@ -956,37 +1113,44 @@ const rawData = {
         {
           "id": "hadaka-jime",
           "name": "Hadaka-Jime",
-          "category": "Shime-waza"
+          "category": "Shime-waza",
+          "translation": "Estrangulamento nu"
         },
         {
           "id": "okuri-eri-jime",
           "name": "Okuri-Eri-Jime",
-          "category": "Shime-waza"
+          "category": "Shime-waza",
+          "translation": "Estrangular juntando as golas"
         },
         {
           "id": "renraku-ouchi-deashi",
           "name": "O-Uchi-Gari > De-Ashi-Harai",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-uchi-gari > De-ashi-harai"
         },
         {
           "id": "renraku-osoto-kesa",
           "name": "O-Soto-Gari > Kesa-Gatame",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-soto-gari > Kesa-gatame"
         },
         {
           "id": "renraku-deashi-osoto",
           "name": "De-Ashi-Harai > O-Soto-Gari",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: De-ashi-harai > O-soto-gari"
         },
         {
           "id": "renraku-hiza-seoi",
           "name": "Hiza-Guruma > Seoi-Nage",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: Hiza-guruma > Seoi-nage"
         },
         {
           "id": "renraku-uchimata-kouchi",
           "name": "Uchi-Mata > Ko-Uchi-Gari",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: Uchi-mata > Ko-uchi-gari"
         },
         {
           "id": "renraku-haraigoshi-osoto",
@@ -1001,22 +1165,26 @@ const rawData = {
         {
           "id": "kaeshi-ouchi-ogoshi",
           "name": "O-Uchi-Gari > O-Goshi",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: O-uchi-gari > O-goshi"
         },
         {
           "id": "kaeshi-ouchi-seoi",
           "name": "O-Uchi-Gari > Seoi-Nage",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: O-uchi-gari > Seoi-nage"
         },
         {
           "id": "kaeshi-sasae-deashi",
           "name": "Sasae-Tsuri-Komi-Ashi > De-Ashi-Harai",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: Sasae-tsuri > De-ashi-harai"
         },
         {
           "id": "kaeshi-ukigoshi-koshiguruma",
           "name": "Uki-Goshi > Koshi-Guruma",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: Uki-goshi > Koshi-guruma"
         },
         {
           "id": "kaeshi-ouchi-tomoenage",
@@ -1048,97 +1216,116 @@ const rawData = {
         {
           "id": "o-soto-guruma",
           "name": "O-Soto-Guruma",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Grande giro externo"
         },
         {
           "id": "uki-waza",
           "name": "Uki-Waza",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Técnica flutuante"
         },
         {
           "id": "yoko-wakare",
           "name": "Yoko-Wakare",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Separação lateral"
         },
         {
           "id": "yoko-guruma",
           "name": "Yoko-Guruma",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Giro lateral"
         },
         {
           "id": "ushiro-goshi",
           "name": "Ushiro-Goshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Quadris para trás"
         },
         {
           "id": "ura-nage",
           "name": "Ura-Nage",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Projeção dorsal"
         },
         {
           "id": "sumi-otoshi",
           "name": "Sumi-Otoshi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Queda de canto"
         },
         {
           "id": "yoko-gake",
           "name": "Yoko-Gake",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Enganchada lateral"
         },
         {
           "id": "okuri-ashi-harai",
           "name": "Okuri-Ashi-Harai",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Enfrentar e varrer com o pé"
         },
         {
           "id": "sasae-tsuri-komi-ashi",
           "name": "Sasae-Tsuri-Komi-Ashi",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Pescar entrando com o sustento do pé"
         },
         {
           "id": "uchi-mata",
           "name": "Uchi-Mata",
-          "category": "Nage-waza"
+          "category": "Nage-waza",
+          "translation": "Parte interna da coxa"
         },
         {
           "id": "kesa-gatame",
           "name": "Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção fundamental em ângulo"
         },
         {
           "id": "kuzure-kesa-gatame",
           "name": "Kuzure-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção em ângulo"
         },
         {
           "id": "yoko-shiho-gatame",
           "name": "Yoko-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção lateral com quatro apoios"
         },
         {
           "id": "kami-shiho-gatame",
           "name": "Kami-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção acima com quatro apoios"
         },
         {
           "id": "ushiro-kesa-gatame",
           "name": "Ushiro-Kesa-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção em ângulo por trás"
         },
         {
           "id": "tate-shiho-gatame",
           "name": "Tate-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção com quatro apoios em escudo"
         },
         {
           "id": "kuzure-kami-shiho-gatame",
           "name": "Kuzure-Kami-Shiho-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Variante da detenção acima com quatro apoios"
         },
         {
           "id": "kata-gatame",
           "name": "Kata-Gatame",
-          "category": "Osae-komi-waza"
+          "category": "Osae-komi-waza",
+          "translation": "Detenção pelo (com) ombro"
         },
         {
           "id": "ura-gatame",
@@ -1153,47 +1340,56 @@ const rawData = {
         {
           "id": "hadaka-jime",
           "name": "Hadaka-Jime",
-          "category": "Shime-waza"
+          "category": "Shime-waza",
+          "translation": "Estrangulamento nu"
         },
         {
           "id": "okuri-eri-jime",
           "name": "Okuri-Eri-Jime",
-          "category": "Shime-waza"
+          "category": "Shime-waza",
+          "translation": "Estrangular juntando as golas"
         },
         {
           "id": "kata-ha-jime",
           "name": "Kata-Ha-Jime",
-          "category": "Shime-waza"
+          "category": "Shime-waza",
+          "translation": "Estrangular com uma asa"
         },
         {
           "id": "sode-guruma-jime",
           "name": "Sode-Guruma-Jime",
-          "category": "Shime-waza"
+          "category": "Shime-waza",
+          "translation": "Estrangular girando a manga"
         },
         {
           "id": "renraku-ouchi-deashi",
           "name": "O-Uchi-Gari > De-Ashi-Harai",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-uchi-gari > De-ashi-harai"
         },
         {
           "id": "renraku-osoto-kesa",
           "name": "O-Soto-Gari > Kesa-Gatame",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: O-soto-gari > Kesa-gatame"
         },
         {
           "id": "renraku-deashi-osoto",
           "name": "De-Ashi-Harai > O-Soto-Gari",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: De-ashi-harai > O-soto-gari"
         },
         {
           "id": "renraku-hiza-seoi",
           "name": "Hiza-Guruma > Seoi-Nage",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: Hiza-guruma > Seoi-nage"
         },
         {
           "id": "renraku-uchimata-kouchi",
           "name": "Uchi-Mata > Ko-Uchi-Gari",
-          "category": "Renraku-henka-waza"
+          "category": "Renraku-henka-waza",
+          "translation": "Combinação: Uchi-mata > Ko-uchi-gari"
         },
         {
           "id": "renraku-haraigoshi-osoto",
@@ -1208,22 +1404,26 @@ const rawData = {
         {
           "id": "kaeshi-ouchi-ogoshi",
           "name": "O-Uchi-Gari > O-Goshi",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: O-uchi-gari > O-goshi"
         },
         {
           "id": "kaeshi-ouchi-seoi",
           "name": "O-Uchi-Gari > Seoi-Nage",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: O-uchi-gari > Seoi-nage"
         },
         {
           "id": "kaeshi-sasae-deashi",
           "name": "Sasae-Tsuri-Komi-Ashi > De-Ashi-Harai",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: Sasae-tsuri > De-ashi-harai"
         },
         {
           "id": "kaeshi-ukigoshi-koshiguruma",
           "name": "Uki-Goshi > Koshi-Guruma",
-          "category": "Kaeshi-waza"
+          "category": "Kaeshi-waza",
+          "translation": "Contra-ataque: Uki-goshi > Koshi-guruma"
         },
         {
           "id": "kaeshi-ouchi-tomoenage",
