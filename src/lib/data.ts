@@ -215,7 +215,7 @@ const rawData = {
       "techniques": [
         {
           "id": "happo-kuzushi",
-          "name": "Happo-Kuzushi (8 direções de desequilíbrio)",
+          "name": "Happo-Kuzushi",
           "category": "Kuzushi",
           "translation": "8 direções de desequilíbrio"
         },

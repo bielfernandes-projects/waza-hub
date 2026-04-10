@@ -125,7 +125,11 @@ export function TechniqueRow({ technique, isCompleted, isOpen = false, onToggleO
             )}
           </div>
           <span className="text-[10px] font-black uppercase tracking-widest border border-black bg-yellow-300 px-1 mt-1 inline-block opacity-90 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-            {technique.translation || 'Solicitar tradução ao Professor'}
+            {technique.category === 'Kaeshi-waza' 
+              ? 'Técnicas de contra ataque' 
+              : technique.category === 'Renraku-henka-waza' 
+                ? 'Técnicas de ataques combinados' 
+                : (technique.translation || 'Solicitar tradução ao Professor')}
           </span>
         </div>
 
