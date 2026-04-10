@@ -101,14 +101,14 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
         </div>
       </div>
 
-      {/* SECTION 1: HISTÓRIA E VOCABULÁRIO */}
+      {/* SECTION 1: CONTEÚDO TEÓRICO */}
       {hasHistory && (
         <section className="flex flex-col border-b-4 border-black">
           <div className="bg-black text-white px-6 py-4">
-            <h2 className="text-2xl font-black uppercase tracking-widest">1. História e Vocabulário</h2>
+            <h2 className="text-2xl font-black uppercase tracking-widest">1. Conteúdo Teórico</h2>
           </div>
           <ExpandableHistory 
-            description={belt.history.join(' ')} 
+            items={belt.history} 
             beltId={belt.id}
             isCompleted={isHistoryCompleted}
           />
@@ -166,7 +166,7 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
                Pronto para o Teste?
              </h3>
              <p className="font-bold text-lg mb-8 text-neutral-600">
-               Avalie seus conhecimentos teóricos de História, Vocabulário e Técnicas exigidos para a <span className="text-black">Faixa {belt.name}</span>.
+               Avalie seus conhecimentos teóricos de Conteúdo Teórico, Vocabulário e Técnicas exigidos para a <span className="text-black">Faixa {belt.name}</span>.
              </p>
              
              <Link 

@@ -113,7 +113,7 @@ export default async function ProgressPage() {
                       </span>
                       {hasHistory && (
                         <span className={`text-[10px] uppercase font-black tracking-widest px-2 py-1 border border-black ${historyDone ? 'bg-green-500 text-black' : 'bg-white text-black'}`}>
-                          História {historyDone ? 'Lida ✔' : 'Pendente'}
+                          Teoria {historyDone ? 'Lida ✔' : 'Pendente'}
                         </span>
                       )}
                    </div>

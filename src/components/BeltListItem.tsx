@@ -39,8 +39,8 @@ export function BeltListItem({ belt, globalCompletedIds = new Set(), completedHi
           <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tighter break-words leading-tight">
              {belt.name}
           </h2>
-          <div className="text-[10px] sm:text-xs font-black uppercase tracking-widest mt-1 opacity-60 truncate">
-            {aggregatedTechniques.length} Técnicas {hasHistory ? '+ História' : ''}
+           <div className="text-[10px] sm:text-xs font-black uppercase tracking-widest mt-1 opacity-60 truncate">
+            {aggregatedTechniques.length} Técnicas {hasHistory ? '+ Conteúdo Teórico' : ''}
           </div>
         </div>
 

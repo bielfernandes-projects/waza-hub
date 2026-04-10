@@ -22,7 +22,7 @@ export default async function QuizPage() {
       <section className="bg-white border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] p-8">
         <h1 className="text-4xl font-black uppercase mb-4 tracking-tighter">Avaliação Teórica</h1>
         <p className="text-gray-600 font-medium mb-8">
-          Teste seus conhecimentos sobre técnicas, vocabulário e história acumulados até a sua faixa atual.
+          Teste seus conhecimentos sobre técnicas, vocabulário e conteúdo teórico acumulados até a sua faixa atual.
         </p>
         <QuizStartForm />
       </section>
