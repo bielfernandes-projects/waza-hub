@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { submitProfile, getUserProfile } from '@/app/actions/profile'
+import { updatePassword } from '@/app/actions/auth'
 import { BELTS } from '@/lib/data'
 import { useRouter } from 'next/navigation'
 
@@ -11,7 +12,11 @@ export default function ProfilePage() {
   const [isLoading, setIsLoading] = useState(false)
   const [isFetching, setIsFetching] = useState(true)
   const [profile, setProfile] = useState<any>(null)
-  
+
+  const [pwError, setPwError] = useState<string | null>(null)
+  const [pwSuccess, setPwSuccess] = useState<string | null>(null)
+  const [isPwLoading, setIsPwLoading] = useState(false)
+
   const router = useRouter()
 
   useEffect(() => {
@@ -39,7 +44,7 @@ export default function ProfilePage() {
     setSuccess(null)
 
     const formData = new FormData(e.currentTarget)
-    
+
     try {
       await submitProfile(formData)
       setSuccess('Perfil atualizado com sucesso!')
@@ -49,6 +54,25 @@ export default function ProfilePage() {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  const handlePasswordSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsPwLoading(true)
+    setPwError(null)
+    setPwSuccess(null)
+
+    const formData = new FormData(e.currentTarget)
+    const result = await updatePassword(formData)
+
+    if (result?.error) {
+      setPwError(result.error)
+    } else {
+      setPwSuccess('Senha alterada com sucesso!')
+      ;(e.target as HTMLFormElement).reset()
+      setTimeout(() => setPwSuccess(null), 3000)
+    }
+    setIsPwLoading(false)
   }
 
   if (isFetching) {
@@ -145,9 +169,72 @@ export default function ProfilePage() {
             disabled={isLoading}
             className="mt-4 border-4 border-black bg-black text-white font-black uppercase py-4 hover:bg-yellow-400 hover:text-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-none hover:translate-y-1 hover:translate-x-1"
           >
-            {isLoading ? 'Salvando...' : 'Salvar Alterações'}
+            {isLoading ? 'Salvando...' : 'Salvar Alteracoes'}
           </button>
         </form>
+      </div>
+
+      {/* SECURITY BLOCK */}
+      <div className="w-full max-w-lg mt-8 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+        {/* Warning header */}
+        <div className="bg-black text-white px-6 py-4 flex items-center gap-3">
+          <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          <h3 className="font-black uppercase tracking-widest text-sm">Zona de Seguranca — Alterar Senha</h3>
+        </div>
+
+        <div className="bg-white p-6">
+          <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-6 border-l-4 border-neutral-300 pl-3">
+            Acoes nesta area sao irreversiveis. Certifique-se de guardar sua nova senha em local seguro.
+          </p>
+
+          {pwError && (
+            <div className="bg-red-100 border-2 border-red-600 text-red-900 px-4 py-3 font-bold mb-4 uppercase text-sm">
+              {pwError}
+            </div>
+          )}
+
+          {pwSuccess && (
+            <div className="bg-green-100 border-2 border-green-600 text-green-900 px-4 py-3 font-bold mb-4 uppercase text-sm">
+              {pwSuccess}
+            </div>
+          )}
+
+          <form onSubmit={handlePasswordSubmit} className="flex flex-col gap-4">
+            <div className="flex flex-col">
+              <label className="font-bold text-sm uppercase mb-1" htmlFor="password">Nova Senha</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                required
+                minLength={6}
+                className="border-2 border-black p-2 focus:outline-none focus:ring-2 focus:ring-black"
+              />
+            </div>
+
+            <div className="flex flex-col">
+              <label className="font-bold text-sm uppercase mb-1" htmlFor="confirmPassword">Confirmar Nova Senha</label>
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                required
+                minLength={6}
+                className="border-2 border-black p-2 focus:outline-none focus:ring-2 focus:ring-black"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isPwLoading}
+              className="mt-2 border-4 border-black bg-white text-black font-black uppercase py-4 hover:bg-black hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isPwLoading ? 'Alterando...' : 'Confirmar Nova Senha'}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   )

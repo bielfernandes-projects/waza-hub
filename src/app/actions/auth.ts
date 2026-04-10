@@ -62,3 +62,48 @@ export async function logout(formData?: FormData) {
   revalidatePath('/', 'layout')
   redirect('/login')
 }
+
+export async function resetPasswordForEmail(formData: FormData, origin: string) {
+  const email = formData.get('email') as string;
+
+  if (!email) {
+    return { error: 'E-mail é obrigatório' };
+  }
+
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${origin}/reset-password`,
+  });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  return { success: true };
+}
+
+export async function updatePassword(formData: FormData) {
+  const password = formData.get('password') as string;
+  const confirmPassword = formData.get('confirmPassword') as string;
+
+  if (!password || !confirmPassword) {
+    return { error: 'Preencha todos os campos da senha.' };
+  }
+
+  if (password !== confirmPassword) {
+    return { error: 'As senhas não coincidem.' };
+  }
+
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.updateUser({
+    password: password
+  });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  return { success: true };
+}
