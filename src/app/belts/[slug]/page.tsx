@@ -61,23 +61,30 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
   return (
     <article className="flex flex-col bg-white">
       {/* Header Profile with Back Button */}
-      <div className="border-b-4 border-black relative overflow-hidden">
+      <div className={`border-b-4 border-black relative overflow-hidden ${belt.id === 'preta' ? 'bg-black' : ''}`}>
         {/* Dual Colors Strip via absolute backgrounds */}
-        <div className="absolute inset-0 z-0 flex opacity-30 pointer-events-none" aria-hidden="true">
+        <div className={`absolute inset-0 z-0 flex ${belt.id === 'preta' ? 'opacity-100' : 'opacity-30'} pointer-events-none`} aria-hidden="true">
           {belt.colors.map((c, i) => (
              <div key={i} className={`flex-1 h-full ${c}`} />
           ))}
         </div>
         
         <div className="p-6 relative z-10">
-          <Link href="/" className="inline-flex items-center gap-2 font-black uppercase text-sm tracking-widest bg-black text-white px-4 py-2 border-2 border-black hover:bg-neutral-800 transition-colors mb-6 shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none">
+          <Link 
+            href="/" 
+            className={`inline-flex items-center gap-2 font-black uppercase text-sm tracking-widest px-4 py-2 border-2 transition-colors mb-6 shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none ${
+              belt.id === 'preta' 
+                ? 'bg-white text-black border-white hover:bg-neutral-200' 
+                : 'bg-black text-white border-black hover:bg-neutral-800'
+            }`}
+          >
             <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={3} d="M15 19l-7-7 7-7" />
             </svg>
             Voltar
           </Link>
 
-          <h1 className="text-6xl font-black uppercase tracking-tighter mb-4 text-black mix-blend-multiply drop-shadow-sm">
+          <h1 className={`text-6xl font-black uppercase tracking-tighter mb-4 drop-shadow-sm ${belt.id === 'preta' ? 'text-white' : 'text-black mix-blend-multiply'}`}>
             Faixa {belt.name}
           </h1>
 
