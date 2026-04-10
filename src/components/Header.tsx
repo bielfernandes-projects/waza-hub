@@ -2,14 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { HeaderAuth } from './HeaderAuth';
 
 export function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const closeSidebar = () => setIsSidebarOpen(false);
@@ -26,15 +25,13 @@ export function Header() {
   }, [isSidebarOpen]);
 
   const navLinks = [
-    { name: 'Início', href: '/' },
-    { name: 'Faixas', href: '/#faixas' },
+    { name: 'Inicio', href: '/' },
+    { name: 'Faixas e Progresso', href: '/progress' },
     { name: 'Simulados', href: '/quiz' },
-    { name: 'Progresso', href: '/progress' },
     { name: 'Perfil', href: '/profile' },
   ];
 
-  const isAuthPage = pathname === '/login' || pathname === '/signup';
-  const isRootPage = pathname === '/';
+  const isAuthPage = pathname === '/login' || pathname === '/signup' || pathname === '/onboarding' || pathname === '/forgot-password' || pathname === '/reset-password';
 
   if (isAuthPage) {
     return null;
@@ -45,29 +42,17 @@ export function Header() {
       <header className="sticky top-0 z-40 w-full border-b-4 border-black bg-white shadow-sm">
         <div className="flex h-20 items-center justify-between px-6">
           
-          {/* Esquerda: Botão Voltar ou Menu Hamburger */}
+          {/* Esquerda: Menu Hamburger */}
           <div className="flex-1 flex items-center justify-start">
-            {!isRootPage ? (
-              <button 
-                onClick={() => router.back()}
-                className="flex h-10 w-10 items-center justify-center border-2 border-black bg-white hover:bg-black hover:text-white transition-colors"
-                aria-label="Voltar"
-              >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={3} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-            ) : (
-              <button 
-                onClick={toggleSidebar}
-                className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors"
-                aria-label="Menu"
-              >
-                <span className="block h-1 w-6 bg-current"></span>
-                <span className="block h-1 w-6 bg-current"></span>
-                <span className="block h-1 w-6 bg-current"></span>
-              </button>
-            )}
+            <button 
+              onClick={toggleSidebar}
+              className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors"
+              aria-label="Menu"
+            >
+              <span className="block h-1 w-6 bg-current"></span>
+              <span className="block h-1 w-6 bg-current"></span>
+              <span className="block h-1 w-6 bg-current"></span>
+            </button>
           </div>
 
           {/* Centro: Título ou Logo */}

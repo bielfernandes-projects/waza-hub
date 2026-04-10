@@ -44,6 +44,15 @@ export default async function ProgressPage() {
   return (
     <article className="h-full bg-neutral-100 flex flex-col p-6 overflow-y-auto">
       <div className="mb-6">
+        <Link 
+          href="/" 
+          className="inline-flex items-center gap-2 font-black uppercase text-sm tracking-widest px-4 py-2 border-2 border-black bg-black text-white hover:bg-neutral-800 transition-colors mb-6 shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none"
+        >
+          <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={3} d="M15 19l-7-7 7-7" />
+          </svg>
+          Voltar
+        </Link>
         <h1 className="text-5xl font-black uppercase tracking-tighter mb-2">Painel de Progresso</h1>
         <p className="text-neutral-600 font-bold uppercase tracking-widest">Acompanhe seu desenvolvimento no caminho suave.</p>
       </div>
@@ -94,16 +103,16 @@ export default async function ProgressPage() {
              return (
                <Link href={`/belts/${belt.slug}`} key={belt.id} className="block group">
                  <div className="border-4 border-black bg-white flex flex-col hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
-                   <div className="flex justify-between items-center p-4">
-                     <span className="font-black uppercase tracking-widest text-lg flex items-center gap-3">
+                   <div className="flex justify-between items-center p-4 gap-2">
+                     <span className="font-black uppercase tracking-widest text-sm flex items-center gap-3 min-w-0">
                        <div className="w-5 h-5 rounded-full border-2 border-black flex overflow-hidden shrink-0">
                          {belt.colors.map((c, idx) => (
                            <div key={idx} className={`flex-1 h-full ${c}`} />
                          ))}
                        </div>
-                       {belt.name}
+                       <span className="truncate">{belt.name}</span>
                      </span>
-                     <span className="font-black text-2xl">{percentage}%</span>
+                     <span className="font-black text-2xl shrink-0">{percentage}%</span>
                    </div>
                    
                    <div className="mx-4 h-3 bg-neutral-200 border-2 border-black">

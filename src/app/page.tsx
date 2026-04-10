@@ -72,7 +72,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col h-full min-h-[calc(100vh-80px)] bg-neutral-100 pb-12">
       {/* 1. HEADER */}
-      <div className="bg-white border-b-4 border-black p-8">
+      <div className="bg-white p-8">
         <h1 className="text-4xl font-black uppercase tracking-tighter mb-2">
           Olá, {firstName}
         </h1>

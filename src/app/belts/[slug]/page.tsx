@@ -84,7 +84,7 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
             Voltar
           </Link>
 
-          <h1 className={`text-6xl font-black uppercase tracking-tighter mb-4 drop-shadow-md ${
+          <h1 className={`text-3xl sm:text-4xl font-black uppercase tracking-tighter mb-4 drop-shadow-md break-words ${
             ['azul', 'verde', 'roxa', 'marrom', 'preta', 'cinza-azul'].includes(belt.id) 
               ? 'text-white' 
               : 'text-black'
