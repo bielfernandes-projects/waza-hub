@@ -16,6 +16,7 @@ export function Header() {
   const navLinks = [
     { name: 'Início', href: '/' },
     { name: 'Faixas', href: '/#faixas' },
+    { name: 'Simulados', href: '/quiz' },
     { name: 'Progresso', href: '/progress' },
     { name: 'Perfil', href: '#' },
   ];

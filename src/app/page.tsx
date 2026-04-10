@@ -40,9 +40,14 @@ export default async function Home() {
         </div>
         
         {user && (
-          <Link href="/progress" className="font-black uppercase tracking-widest bg-green-500 text-black border-4 border-black px-6 py-4 hover:bg-black hover:text-green-500 transition-colors shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none shrink-0 text-center">
-            Ver Meu Progresso
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+            <Link href="/quiz" className="font-black uppercase tracking-widest bg-yellow-400 text-black border-4 border-black px-6 py-4 hover:bg-black hover:text-yellow-400 transition-colors shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none min-w-[200px] text-center">
+              Fazer Simulado
+            </Link>
+            <Link href="/progress" className="font-black uppercase tracking-widest bg-green-500 text-black border-4 border-black px-6 py-4 hover:bg-black hover:text-green-500 transition-colors shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none min-w-[200px] text-center">
+              Ver Meu Progresso
+            </Link>
+          </div>
         )}
       </div>
 
