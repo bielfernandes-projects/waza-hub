@@ -4,6 +4,7 @@ import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { QuizStartForm } from './QuizStartForm'
+import { getUserProfile } from '@/app/actions/profile'
 
 export default async function QuizPage() {
   const supabase = await createClient();
@@ -11,6 +12,11 @@ export default async function QuizPage() {
 
   if (!user) {
     redirect('/login');
+  }
+
+  const profile = await getUserProfile();
+  if (!profile) {
+    redirect('/onboarding');
   }
 
   const history = await fetchQuizHistory();

@@ -19,7 +19,7 @@ export function Header() {
     { name: 'Faixas', href: '/#faixas' },
     { name: 'Simulados', href: '/quiz' },
     { name: 'Progresso', href: '/progress' },
-    { name: 'Perfil', href: '#' },
+    { name: 'Perfil', href: '/profile' },
   ];
 
   const isAuthPage = pathname === '/login' || pathname === '/signup';

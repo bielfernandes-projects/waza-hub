@@ -2,6 +2,7 @@ import { createClient } from '@/utils/supabase/server';
 import { BELTS, getBeltWithCumulativeData, type Technique } from '@/lib/data';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { getUserProfile } from '@/app/actions/profile';
 
 export default async function ProgressPage() {
   const supabase = await createClient();
@@ -9,6 +10,11 @@ export default async function ProgressPage() {
 
   if (!user) {
     redirect('/login');
+  }
+
+  const profile = await getUserProfile();
+  if (!profile) {
+    redirect('/onboarding');
   }
 
   // Fetch all user progress
