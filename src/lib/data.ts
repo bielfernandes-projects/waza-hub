@@ -142,7 +142,7 @@ const rawData = {
       "techniques": [
         {
           "id": "formas-kumi-kata",
-          "name": "Formas de pegar no Judogi",
+          "name": "Kumi-kata",
           "category": "Kumi-kata",
           "translation": "Formas de pegada"
         },
@@ -1481,12 +1481,12 @@ export function getBeltWithCumulativeData(beltIdOrSlug: string): Belt | undefine
   if (currentIndex === -1) return undefined;
 
   const currentBelt = BELTS[currentIndex];
-  
+
   // Aggregate all history and techniques from [0...currentIndex]
   const beltsUpToNow = BELTS.slice(0, currentIndex + 1);
-  
+
   const allHistory = beltsUpToNow.flatMap(b => b.history);
-  
+
   // Flatten techniques and deduplicate by id
   const techniqueMap = new Map<string, Technique>();
   beltsUpToNow.forEach(b => {

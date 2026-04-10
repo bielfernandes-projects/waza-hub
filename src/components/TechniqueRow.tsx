@@ -3,6 +3,7 @@
 import { useState, useTransition, useEffect } from 'react';
 import { type Technique } from '@/lib/data';
 import { toggleProgress } from '@/app/actions/progress';
+import { useTTS } from '@/hooks/useTTS';
 
 interface TechniqueRowProps {
   technique: Technique;
@@ -17,6 +18,13 @@ export function TechniqueRow({ technique, isCompleted, isOpen = false, onToggleO
 
   const [sbMedia, setSbMedia] = useState<{ videoId?: string | null; images: string[] } | null>(null);
   const [modalImage, setModalImage] = useState<string | null>(null);
+
+  const { speak, isSpeaking, supported } = useTTS();
+
+  const handleSpeak = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    speak(technique.name);
+  };
 
   // Close modal on Escape key
   useEffect(() => {
@@ -114,10 +122,28 @@ export function TechniqueRow({ technique, isCompleted, isOpen = false, onToggleO
 
         {/* Info */}
         <div className="flex-1 cursor-pointer py-2" onClick={onToggleOpen} role="button">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <h3 className={`font-black tracking-tight text-xl uppercase ${completed ? 'text-green-900 line-through opacity-70' : 'text-black'}`}>
               {technique.name}
             </h3>
+            
+            {supported && (
+              <button 
+                onClick={handleSpeak}
+                className={`flex-shrink-0 w-6 h-6 flex items-center justify-center border-2 border-black transition-all ${isSpeaking ? 'bg-yellow-400 scale-110 shadow-[2px_2px_0px_rgba(0,0,0,1)]' : 'bg-neutral-100 hover:bg-yellow-300'}`}
+                aria-label={`Ouvir pronúncia de ${technique.name}`}
+                title="Ouvir pronúncia"
+              >
+                <svg className="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  {isSpeaking ? (
+                    <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={3} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5 14v-4h4l5-5v14l-5-5H5z" />
+                  ) : (
+                    <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={3} d="M15.536 8.464a5 5 0 010 7.072M5 14v-4h4l5-5v14l-5-5H5z" />
+                  )}
+                </svg>
+              </button>
+            )}
+
             {completed && (
               <span className="text-[10px] bg-green-500 text-black border border-black font-black uppercase tracking-widest px-1 py-0.5 whitespace-nowrap hidden sm:inline-block">
                 Concluído
