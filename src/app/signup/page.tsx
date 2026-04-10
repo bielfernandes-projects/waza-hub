@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { signup } from '@/app/actions/auth'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function SignupPage() {
   const [error, setError] = useState<string | null>(null)
@@ -23,7 +24,17 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="p-8 flex flex-col items-center justify-center bg-neutral-100 min-h-[calc(100vh-100px)]">
+    <div className="p-8 flex flex-col items-center justify-center bg-neutral-100 min-h-screen">
+      <div className="mb-8 relative h-20 w-40">
+        <Image 
+          src="/logo.png" 
+          alt="WazaHub Logo"
+          fill
+          className="object-contain"
+          priority
+        />
+      </div>
+
       <div className="w-full max-w-sm bg-white border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
         <h2 className="text-3xl font-black uppercase tracking-tighter mb-6 text-center text-red-600">Cadastro</h2>
         
@@ -75,3 +86,4 @@ export default function SignupPage() {
     </div>
   )
 }
+

@@ -2,13 +2,14 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { HeaderAuth } from './HeaderAuth';
 
 export function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const closeSidebar = () => setIsSidebarOpen(false);
@@ -21,33 +22,61 @@ export function Header() {
     { name: 'Perfil', href: '#' },
   ];
 
-  const isLoginPage = pathname === '/login';
+  const isAuthPage = pathname === '/login' || pathname === '/signup';
+  const isRootPage = pathname === '/';
+
+  if (isAuthPage) {
+    return null;
+  }
 
   return (
     <>
       <header className="sticky top-0 z-40 w-full border-b-4 border-black bg-white shadow-sm">
-        <div className={`flex h-20 items-center px-6 ${isLoginPage ? 'justify-center' : 'justify-between'}`}>
-          <Link href="/" onClick={closeSidebar} className="relative h-16 w-32 hover:scale-105 transition-transform">
-            <Image 
-              src="/logo.png" 
-              alt="WazaHub Logo"
-              fill
-              className="object-contain"
-              priority
-            />
-          </Link>
+        <div className="flex h-20 items-center justify-between px-6">
           
-          {!isLoginPage && (
-            <button 
-              onClick={toggleSidebar}
-              className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors"
-              aria-label="Toggle menu"
-            >
-              <span className="block h-1 w-6 bg-current"></span>
-              <span className="block h-1 w-6 bg-current"></span>
-              <span className="block h-1 w-6 bg-current"></span>
-            </button>
-          )}
+          {/* Esquerda: Botão Voltar ou Menu Hamburger */}
+          <div className="flex-1 flex items-center justify-start">
+            {!isRootPage ? (
+              <button 
+                onClick={() => router.back()}
+                className="flex h-10 w-10 items-center justify-center border-2 border-black bg-white hover:bg-black hover:text-white transition-colors"
+                aria-label="Voltar"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={3} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            ) : (
+              <button 
+                onClick={toggleSidebar}
+                className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors"
+                aria-label="Menu"
+              >
+                <span className="block h-1 w-6 bg-current"></span>
+                <span className="block h-1 w-6 bg-current"></span>
+                <span className="block h-1 w-6 bg-current"></span>
+              </button>
+            )}
+          </div>
+
+          {/* Centro: Título ou Logo */}
+          <div className="flex-1 flex items-center justify-center">
+            <Link href="/" onClick={closeSidebar} className="relative h-16 w-32 hover:scale-105 transition-transform">
+              <Image 
+                src="/logo.png" 
+                alt="WazaHub Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </Link>
+          </div>
+
+          {/* Direita: Ações ou vazio */}
+          <div className="flex-1 flex items-center justify-end">
+            {/* Área direita disponível para futuras integrações (ex: ícone de perfil rápido) */}
+          </div>
+          
         </div>
       </header>
 
@@ -61,12 +90,13 @@ export function Header() {
 
       {/* Sidebar Drawer */}
       <div 
-        className={`fixed top-0 right-0 z-50 h-full w-80 max-w-[80vw] transform border-l-4 border-black bg-white transition-transform duration-300 ease-in-out flex flex-col ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed top-0 left-0 z-50 h-full w-80 max-w-[80vw] transform border-r-4 border-black bg-white transition-transform duration-300 ease-in-out flex flex-col ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
-        <div className="flex justify-end p-6 border-b-2 border-black">
+        <div className="flex justify-start p-6 border-b-2 border-black">
           <button 
             onClick={closeSidebar}
             className="flex h-10 w-10 items-center justify-center border-2 border-black bg-white hover:bg-black hover:text-white transition-colors"
+            aria-label="Fechar menu"
           >
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
