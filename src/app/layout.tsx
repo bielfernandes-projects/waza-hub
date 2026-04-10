@@ -32,9 +32,14 @@ export default function RootLayout({
         <AuthProvider>
           <div className="max-w-2xl mx-auto w-full min-h-screen border-x-2 border-black bg-white shadow-xl flex flex-col relative">
             <Header />
-            <main className="flex-1">
+            <main className="flex-1 pb-12">
               {children}
             </main>
+            <footer className="w-full py-6 text-center border-t border-transparent">
+              <p className="text-[10px] sm:text-xs text-neutral-300 font-bold uppercase tracking-widest px-4">
+                Todo o conteúdo utilizado é coletado de fontes oficiais.
+              </p>
+            </footer>
           </div>
         </AuthProvider>
       </body>

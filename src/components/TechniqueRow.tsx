@@ -124,8 +124,8 @@ export function TechniqueRow({ technique, isCompleted, isOpen = false, onToggleO
               </span>
             )}
           </div>
-          <span className="text-[10px] font-black uppercase tracking-widest border border-black px-1 mt-1 inline-block opacity-80">
-            {technique.category}
+          <span className="text-[10px] font-black uppercase tracking-widest border border-black bg-yellow-300 px-1 mt-1 inline-block opacity-90 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+            {technique.translation || 'Solicitar tradução ao Professor'}
           </span>
         </div>
 
@@ -146,7 +146,7 @@ export function TechniqueRow({ technique, isCompleted, isOpen = false, onToggleO
       {/* Expanded Media Area */}
       <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen && hasMedia ? 'max-h-[2000px] border-t-2 border-black' : 'max-h-0'}`}>
         {hasMedia && (
-          <div className="p-4 bg-neutral-100 flex flex-col gap-6">
+          <div className="p-4 bg-neutral-200 flex flex-col gap-6">
             {/* Video Rendering (Moved to TOP) */}
             {displayVideoUrl && (
               <div className="relative w-full aspect-video border-4 border-black bg-black flex items-center justify-center">

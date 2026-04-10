@@ -7,6 +7,7 @@ export type Technique = {
   id: string;
   name: string;
   category: string;
+  translation?: string;
   videoUrl?: string;
   images?: string[];
 };

@@ -26,7 +26,7 @@ export function BeltListItem({ belt, globalCompletedIds = new Set(), completedHi
     <Link href={`/belts/${belt.slug}`} className="group flex w-full border-4 border-black bg-white hover:bg-neutral-50 transition-colors shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-none overflow-hidden min-h-[96px]">
       
       {/* Heavy Visual Color indicator (Left side) */}
-      <div className="w-6 sm:w-8 flex flex-col border-r-4 border-black shrink-0" aria-hidden="true">
+      <div className="w-12 sm:w-16 flex flex-col border-r-4 border-black shrink-0" aria-hidden="true">
          {belt.colors.map((colorClass: string, idx: number) => (
            <div key={idx} className={`flex-1 w-full ${colorClass}`} />
          ))}
@@ -37,7 +37,7 @@ export function BeltListItem({ belt, globalCompletedIds = new Set(), completedHi
         {/* Name and Text */}
         <div className="flex flex-col min-w-0">
           <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tighter break-words leading-tight">
-             {belt.name}
+             {belt.name.replace('/', '/\u200B')}
           </h2>
            <div className="text-[10px] sm:text-xs font-black uppercase tracking-widest mt-1 opacity-60 truncate">
             {aggregatedTechniques.length} Técnicas {hasHistory ? '+ Conteúdo Teórico' : ''}
