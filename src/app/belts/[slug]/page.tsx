@@ -48,7 +48,7 @@ export default async function BeltPage({ params }: { params: Promise<{ slug: str
   const completedTechsCount = techniques.filter((t: Technique) => completedTechniqueIds.has(t.id)).length;
   const totalCount = techniques.length + (hasHistory ? 1 : 0);
   const completedCount = completedTechsCount + (hasHistory && isHistoryCompleted ? 1 : 0);
-  const progressPercentage = totalCount === 0 ? 0 : Math.round((completedCount / totalCount) * 100);
+  const progressPercentage = totalCount === 0 ? 0 : Math.min(100, Math.round((completedCount / totalCount) * 100));
 
   // Group techniques by category dynamically from current techniques
   const categories = Array.from(new Set(techniques.map((t: Technique) => t.category)));

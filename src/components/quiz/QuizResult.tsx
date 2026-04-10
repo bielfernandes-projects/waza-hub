@@ -87,12 +87,31 @@ export function QuizResult({ questions, answers, beltId }: QuizResultProps) {
       </div>
 
       <div className="fixed bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-md border-t-2">
-        <Link 
-          href="/quiz" 
-          className="flex items-center justify-center w-full max-w-2xl mx-auto h-14 bg-black text-white font-bold tracking-widest uppercase hover:bg-gray-800 transition-colors"
-        >
-          Voltar ao Início
-        </Link>
+        <div className="max-w-2xl mx-auto flex flex-col gap-3">
+          {!isApproved && (
+            <div className="bg-red-50 border-2 border-red-200 px-4 py-3 text-center">
+              <p className="text-sm font-bold text-red-800">
+                Voce ainda nao atingiu a pontuacao minima. Revise o conteudo e tente novamente.
+              </p>
+            </div>
+          )}
+          <div className="flex gap-3">
+            {!isApproved && (
+              <Link
+                href={`/quiz/flow/${beltId}`}
+                className="flex items-center justify-center flex-1 h-14 bg-yellow-400 text-black font-bold tracking-widest uppercase border-2 border-black hover:bg-yellow-300 transition-colors"
+              >
+                Refazer Quiz
+              </Link>
+            )}
+            <Link 
+              href="/quiz" 
+              className={`flex items-center justify-center h-14 bg-black text-white font-bold tracking-widest uppercase hover:bg-gray-800 transition-colors ${isApproved ? 'flex-1' : 'flex-1'}`}
+            >
+              {isApproved ? 'Voltar ao Inicio' : 'Voltar'}
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   )

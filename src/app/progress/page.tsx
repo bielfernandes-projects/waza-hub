@@ -39,7 +39,7 @@ export default async function ProgressPage() {
   const totalAvailablePoints = totalTechniques + totalHistories;
   
   const totalCompleted = completedTechniqueIds.size + completedHistoryIds.size;
-  const globalPercentage = totalAvailablePoints === 0 ? 0 : Math.round((totalCompleted / totalAvailablePoints) * 100);
+  const globalPercentage = totalAvailablePoints === 0 ? 0 : Math.min(100, Math.round((totalCompleted / totalAvailablePoints) * 100));
 
   return (
     <article className="h-full bg-neutral-100 flex flex-col p-6 overflow-y-auto">
@@ -98,7 +98,7 @@ export default async function ProgressPage() {
              const totalInBelt = beltTechs.length + (hasHistory ? 1 : 0);
              const completedInBelt = beltTechs.filter((t: Technique) => completedTechniqueIds.has(t.id)).length + (hasHistory && historyDone ? 1 : 0);
 
-             const percentage = totalInBelt === 0 ? 0 : Math.round((completedInBelt / totalInBelt) * 100);
+             const percentage = totalInBelt === 0 ? 0 : Math.min(100, Math.round((completedInBelt / totalInBelt) * 100));
 
              return (
                <Link href={`/belts/${belt.slug}`} key={belt.id} className="block group">

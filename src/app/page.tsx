@@ -1,4 +1,5 @@
 import { BELTS } from '@/lib/data';
+import { calculateMonthsToBlackBelt } from '@/lib/belt-progression';
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
@@ -43,8 +44,7 @@ export default async function Home() {
 
   // --- Calculations ---
 
-  // 1. Global Progress
-  // Unique techniques across all belts
+  // 1. Global Progress (unique techniques only)
   const allUniqueTechniques = new Set<string>();
   BELTS.forEach(belt => {
     belt.techniques.forEach(t => allUniqueTechniques.add(t.id));
@@ -52,19 +52,17 @@ export default async function Home() {
   
   const totalTechniques = allUniqueTechniques.size;
   const completedTechniquesCount = Array.from(allUniqueTechniques).filter(id => completedTechniqueIds.has(id)).length;
-  const globalProgressPercentage = totalTechniques === 0 ? 0 : Math.round((completedTechniquesCount / totalTechniques) * 100);
+  const globalProgressPercentage = totalTechniques === 0 ? 0 : Math.min(100, Math.round((completedTechniquesCount / totalTechniques) * 100));
 
-  // 2. Current Belt Progress
-  // Only techniques from the current belt
+  // 2. Current Belt Progress (unique techniques from this belt only)
   const beltTechniques = new Set(userBelt.techniques.map(t => t.id));
   const totalBeltTechniques = beltTechniques.size;
   const completedBeltTechniques = Array.from(beltTechniques).filter(id => completedTechniqueIds.has(id)).length;
-  const beltProgressPercentage = totalBeltTechniques === 0 ? 0 : Math.round((completedBeltTechniques / totalBeltTechniques) * 100);
+  const beltProgressPercentage = totalBeltTechniques === 0 ? 0 : Math.min(100, Math.round((completedBeltTechniques / totalBeltTechniques) * 100));
 
-  // 3. Time Estimate
-  // Assuming 6 months per belt, but the final step (Marrom to Preta) is 12 months.
-  const remainingBelts = Math.max(0, BELTS.length - userBeltIndex - 1);
-  const estimatedMonths = remainingBelts > 0 ? ((remainingBelts - 1) * 6) + 12 : 0;
+  // 3. Time Estimate (belt-specific month mapping)
+  const allBeltIds = BELTS.map(b => b.id);
+  const estimatedMonths = calculateMonthsToBlackBelt(userBelt.id, allBeltIds);
 
   // Extract first name
   const firstName = profile.full_name?.split(' ')[0] || 'Judoca';
@@ -155,7 +153,7 @@ export default async function Home() {
               </span>
             </div>
             <p className="text-[10px] uppercase font-bold text-neutral-400 mt-3 tracking-widest">
-              Baseado em média (6 meses/faixa)
+              Baseado na progressao oficial de faixas
             </p>
           </div>
         </div>
