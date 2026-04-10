@@ -1250,8 +1250,24 @@ const rawData = {
   ]
 };
 
+const KYU_MAPPING: Record<string, string> = {
+  "branca-cinza": "11º Kyu",
+  "cinza": "10º Kyu",
+  "cinza-azul": "9º Kyu",
+  "azul": "8º Kyu",
+  "azul-amarela": "7º Kyu",
+  "amarela": "6º Kyu",
+  "amarela-laranja": "5º Kyu",
+  "laranja": "4º Kyu",
+  "verde": "3º Kyu",
+  "roxa": "2º Kyu",
+  "marrom": "1º Kyu",
+  "preta": "1º Dan"
+};
+
 export const BELTS: Belt[] = rawData.belts.map(b => ({
   ...b,
+  name: `${KYU_MAPPING[b.id] || ''} - ${b.name}`.replace(/^- /, ''), // Usa o Kyu, remove o hífen se não tiver Kyu
   colors: BELT_COLORS[b.id] || ["bg-white"],
   slug: b.id // User's id are now the slugs
 }));

@@ -51,11 +51,11 @@ export default async function Home() {
         )}
       </div>
 
-      <div className="flex-1 flex flex-col p-6 overflow-hidden">
+      <div className="flex-1 flex flex-col p-6">
         <h3 id="faixas" className="text-2xl font-black uppercase tracking-widest mb-6">Trilha de Faixas</h3>
-        <div className="-mx-6 px-6 pt-4 pb-8 overflow-x-auto flex gap-6 snap-x snap-mandatory scroll-smooth hide-scrollbar h-full items-stretch">
+        <div className="flex flex-col gap-4 pb-8 w-full max-w-2xl mx-auto">
           {BELTS.map(belt => (
-            <div key={belt.id} className="snap-center sm:snap-start flex-none w-[85vw] sm:w-[320px] h-full transition-transform">
+            <div key={belt.id} className="w-full">
                <BeltListItem 
                  belt={belt} 
                  globalCompletedIds={completedTechniqueIds} 
