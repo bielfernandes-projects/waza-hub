@@ -5,6 +5,7 @@ import { submitProfile, getUserProfile } from '@/app/actions/profile'
 import { updatePassword } from '@/app/actions/auth'
 import { BELTS } from '@/lib/data'
 import { useRouter } from 'next/navigation'
+import { DateInput } from '@/components/DateInput'
 
 export default function ProfilePage() {
   const [error, setError] = useState<string | null>(null)
@@ -113,17 +114,14 @@ export default function ProfilePage() {
             />
           </div>
           
-          <div className="flex flex-col">
-            <label className="font-bold text-sm uppercase mb-1" htmlFor="birthDate">Data de Nascimento</label>
-            <input 
-              id="birthDate" 
-              name="birthDate" 
-              type="date" 
-              required 
-              defaultValue={profile?.birth_date}
-              className="border-2 border-black p-2 focus:outline-none focus:ring-2 focus:ring-black uppercase text-sm"
-            />
-          </div>
+          <DateInput
+            id="birthDate"
+            name="birthDate"
+            label="Data de Nascimento"
+            type="date"
+            required
+            defaultValue={profile?.birth_date}
+          />
 
           <div className="flex flex-col">
             <label className="font-bold text-sm uppercase mb-1" htmlFor="dojoName">Dojo Principal</label>
@@ -153,16 +151,13 @@ export default function ProfilePage() {
             </select>
           </div>
 
-          <div className="flex flex-col">
-            <label className="font-bold text-sm uppercase mb-1" htmlFor="graduationDate">Graduou em (Mês/Ano)</label>
-            <input 
-              id="graduationDate" 
-              name="graduationDate" 
-              type="month" 
-              defaultValue={profile?.belt_graduation_date?.slice(0, 7) || ''}
-              className="border-2 border-black p-2 focus:outline-none focus:ring-2 focus:ring-black uppercase text-sm"
-            />
-          </div>
+          <DateInput
+            id="graduationDate"
+            name="graduationDate"
+            label="Graduou em (Mês/Ano)"
+            type="month"
+            defaultValue={profile?.belt_graduation_date?.slice(0, 7) || ''}
+          />
 
           <button 
             type="submit" 

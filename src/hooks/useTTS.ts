@@ -27,15 +27,14 @@ export function useTTS() {
       
       const voices = window.speechSynthesis.getVoices();
       
-      // Prioridade: ja-JP, depois pt-BR 
-      let selectedVoice = voices.find(v => v.lang.startsWith('ja'));
-      if (!selectedVoice) {
-        selectedVoice = voices.find(v => v.lang.startsWith('pt'));
-      }
+      // Strict rule: Only use Japanese voice for Judo technique names
+      const selectedVoice = voices.find(v => v.lang.startsWith('ja') || v.lang === 'ja_JP');
       
       if (selectedVoice) {
         utterance.voice = selectedVoice;
       }
+      
+      utterance.lang = 'ja-JP'; // Explicitly set lang to ja-JP as a secondary driver for accuracy
 
       utterance.rate = 0.9; // Levemente reduzido para melhor dicção
       utterance.pitch = 1.0;

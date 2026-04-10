@@ -5,6 +5,7 @@ import { submitProfile } from '@/app/actions/profile'
 import { BELTS } from '@/lib/data'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { DateInput } from '@/components/DateInput'
 
 export default function OnboardingPage() {
   const [error, setError] = useState<string | null>(null)
@@ -61,16 +62,13 @@ export default function OnboardingPage() {
             />
           </div>
           
-          <div className="flex flex-col">
-            <label className="font-bold text-sm uppercase mb-1" htmlFor="birthDate">Data de Nascimento</label>
-            <input 
-              id="birthDate" 
-              name="birthDate" 
-              type="date" 
-              required 
-              className="border-2 border-black p-2 focus:outline-none focus:ring-2 focus:ring-black uppercase text-sm"
-            />
-          </div>
+          <DateInput
+            id="birthDate"
+            name="birthDate"
+            label="Data de Nascimento"
+            type="date"
+            required
+          />
 
           <div className="flex flex-col">
             <label className="font-bold text-sm uppercase mb-1" htmlFor="dojoName">Dojo Principal</label>
@@ -100,15 +98,12 @@ export default function OnboardingPage() {
             </select>
           </div>
 
-          <div className="flex flex-col">
-            <label className="font-bold text-sm uppercase mb-1" htmlFor="graduationDate">Graduou em (Mês/Ano)</label>
-            <input 
-              id="graduationDate" 
-              name="graduationDate" 
-              type="month" 
-              className="border-2 border-black p-2 focus:outline-none focus:ring-2 focus:ring-black uppercase text-sm"
-            />
-          </div>
+          <DateInput
+            id="graduationDate"
+            name="graduationDate"
+            label="Graduou em (Mês/Ano)"
+            type="month"
+          />
 
           <button 
             type="submit" 
