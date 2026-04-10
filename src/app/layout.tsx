@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: "black",
     title: "WazaHub"
+  },
+  icons: {
+    icon: "/favicon.png",
   }
 };
 

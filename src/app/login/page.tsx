@@ -24,7 +24,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="p-8 flex flex-col items-center justify-center bg-neutral-100 min-h-screen">
+    <div className="flex flex-col items-center justify-center bg-neutral-100 h-screen overflow-hidden p-6">
       <div className="mb-8 relative h-20 w-40">
         <Image 
           src="/logo.png" 

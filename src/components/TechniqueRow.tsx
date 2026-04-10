@@ -121,9 +121,9 @@ export function TechniqueRow({ technique, isCompleted, isOpen = false, onToggleO
         </button>
 
         {/* Info */}
-        <div className="flex-1 cursor-pointer py-2" onClick={onToggleOpen} role="button">
-          <div className="flex items-center gap-2 flex-wrap">
-            <h3 className={`font-black tracking-tight text-xl uppercase ${completed ? 'text-green-900 line-through opacity-70' : 'text-black'}`}>
+        <div className="flex-1 cursor-pointer py-2 min-w-0" onClick={onToggleOpen} role="button">
+          <div className="flex items-center gap-2">
+            <h3 className={`font-black tracking-tight text-sm sm:text-base md:text-xl uppercase whitespace-nowrap overflow-hidden text-ellipsis ${completed ? 'text-green-900 line-through opacity-70' : 'text-black'}`}>
               {technique.name}
             </h3>
             
@@ -131,8 +131,8 @@ export function TechniqueRow({ technique, isCompleted, isOpen = false, onToggleO
               <button 
                 onClick={handleSpeak}
                 className={`flex-shrink-0 w-6 h-6 flex items-center justify-center border-2 border-black transition-all ${isSpeaking ? 'bg-yellow-400 scale-110 shadow-[2px_2px_0px_rgba(0,0,0,1)]' : 'bg-neutral-100 hover:bg-yellow-300'}`}
-                aria-label={`Ouvir pronúncia de ${technique.name}`}
-                title="Ouvir pronúncia"
+                aria-label={`Ouvir pronuncia de ${technique.name}`}
+                title="Ouvir pronuncia"
               >
                 <svg className="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   {isSpeaking ? (
@@ -145,8 +145,8 @@ export function TechniqueRow({ technique, isCompleted, isOpen = false, onToggleO
             )}
 
             {completed && (
-              <span className="text-[10px] bg-green-500 text-black border border-black font-black uppercase tracking-widest px-1 py-0.5 whitespace-nowrap hidden sm:inline-block">
-                Concluído
+              <span className="text-[10px] bg-green-500 text-black border border-black font-black uppercase tracking-widest px-1 py-0.5 whitespace-nowrap hidden sm:inline-block shrink-0">
+                Concluido
               </span>
             )}
           </div>
